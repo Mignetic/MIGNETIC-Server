@@ -1,0 +1,18 @@
+.Header {
+    height: 80px;
+    margin-top: 50px;
+    margin-left: 70px;
+    margin-right: 70px;
+}
+
+.Header ul {
+    display: flex;
+    justify-content: space-around;
+    gap: 710px;
+}
+
+
+.Header ul > li {
+	font-size:32px;
+    color: white;
+}
