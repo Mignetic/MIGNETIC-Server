@@ -1,8 +1,12 @@
-import React from 'react';
-import '../css/Header.css'
+import React from 'react'
+import '../css/common/Header.css'
+
+import { Link } from 'react-router-dom'
+
+import Logo from '../images/icons/logo.png'
 
 function Header({ where }) {
-    const type = ['home', 'basic'].includes(where) ? where : 'basic';
+    const type = ['home', 'basic'].includes(where) ? where : 'basic'
 
     return (
         <div className="Header">
@@ -11,19 +15,21 @@ function Header({ where }) {
                     <div className="homeHeaderContainer">
                         <nav>
                             <ul>
-                                <li>검사하기</li>
-                                <li>MIGNETIC</li>
-                                <li>핫플보기</li>
+                                <li><Link to=''>검사하기</Link></li>
+                                <li><Link to='/'>MIGNETIC</Link></li>
+                                <li><Link to=''>핫플보기</Link></li>
                             </ul>
                         </nav>
                     </div>
-                ) : type === 'basic'(
-                    <div className="HeaderContainer">
+                ) : (
+                    <div className="headerContainer">
                         <nav>
                             <ul>
-                                <li>{ }</li>
-                                <li>검사하기</li>
-                                <li>핫플보기</li>
+                                <li><Link to='/'><img src={Logo} alt="로고" /></Link></li>
+                                <div className='liContainer'>
+                                    <li className='liNav1'><Link to=''>검사하기</Link></li>
+                                    <li className='liNav2'><Link to=''>핫플보기</Link></li>
+                                </div>
                             </ul>
                         </nav>
                     </div>
