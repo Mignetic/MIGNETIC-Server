@@ -1,17 +1,22 @@
-body {
-    background-size: cover;
-    background-repeat: no-repeat;
-    margin: 0;
-    padding: 0;
+.Home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
 }
-button {
-    cursor: pointer;
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-40px);
+    }
 }
-ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-a {
-    text-decoration: none;
+
+.homeLogo {
+    max-width: 100%;
+    height: auto;
+    animation: bounce 2s infinite;
 }
