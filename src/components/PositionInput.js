@@ -21,7 +21,7 @@ function PositionInput() {
     }
 
     const handleSubmit = () => {
-        // navigate('/question')
+        navigate('/test')
     }
 
     return (

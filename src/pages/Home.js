@@ -1,4 +1,4 @@
-import bgImg from '../images/home-bg.png'
+// import bgImg from '../images/home-bg.png'
 import '../css/common/Index.css'
 import '../css/Home.css'
 

@@ -1,0 +1,39 @@
+::-webkit-scrollbar {
+    display: none;
+}
+
+.Test {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 120px;
+}
+
+.testboxContainer {
+    position: relative;
+}
+
+.testboxContainer p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 65px;
+    color: black;
+    margin: 0;
+    text-align: center;
+    white-space: nowrap;
+    font-family: 'AppleSDGothicNeo-low';
+}
+
+.testboxContainer p br {
+    display: block;
+    content: "";
+    margin-bottom: 35px;
+}
+
+.arrowImg {
+    margin-top: 58px;
+    margin-bottom: 200px;
+}

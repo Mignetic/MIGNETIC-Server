@@ -15,7 +15,7 @@ function Header({ where }) {
                     <div className="homeHeaderContainer">
                         <nav>
                             <ul>
-                                <li><Link to=''>검사하기</Link></li>
+                                <li><Link to='/testselect'>검사하기</Link></li>
                                 <li><Link to='/'>MIGNETIC</Link></li>
                                 <li><Link to=''>핫플보기</Link></li>
                             </ul>
@@ -27,7 +27,7 @@ function Header({ where }) {
                             <ul>
                                 <li><Link to='/'><img src={Logo} alt="로고" /></Link></li>
                                 <div className='liContainer'>
-                                    <li className='liNav1'><Link to=''>검사하기</Link></li>
+                                    <li className='liNav1'><Link to='/testselect'>검사하기</Link></li>
                                     <li className='liNav2'><Link to=''>핫플보기</Link></li>
                                 </div>
                             </ul>
