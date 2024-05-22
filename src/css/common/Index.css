@@ -25,6 +25,11 @@ a {
     font-family: 'AppleSDGothicNeo';
     src: url('../../fonts/AppleSDGothicNeoSB.ttf') format("truetype");
 }
+
+@font-face {
+    font-family: 'AppleSDGothicNeo-low';
+    src: url('../../fonts/AppleSDGothicNeoR.ttf') format("truetype");
+}
 /* 
 @font-face {
     font-family: AppleSDGothicNeo;
