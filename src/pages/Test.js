@@ -29,7 +29,7 @@ function Test() {
                 <img src={arrow} className='arrowImg' />
                 <Question />
             </div>
-            <Footer />
+            <Footer position={'test'}/>
         </div>
     )
 }

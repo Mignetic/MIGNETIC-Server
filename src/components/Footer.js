@@ -1,16 +1,22 @@
 import logo from '../images/icons/footer-logo.png'
-import gihub from '../images/icons/footer-github.png'
+import gihubIcon from '../images/icons/footer-github.png'
 
 import '../css/common/Footer.css'
 
-function Footer() {
+function Footer({ position }) {
+    const type = ['test', 'result'].includes(position) ? position : 'test'
+
     return (
         <div className="Footer">
-            <div className='footerLogoContainer'>
-                <img src={logo} />
-            </div>
+            {
+                type === 'test' && (
+                    <div className='footerLogoContainer'>
+                        <img src={logo} />
+                    </div>
+                )
+            }
             <div className='footerTest'>
-                <div className='footerTestFont'>
+                <div className={`footerTestFont ${type === 'test' ? 'testContainer' : 'resultContainer'}`}>
                     MIRIM MEISTER HIGH SHCOOL<br />
                     <br />
                     TEAM [ PEPPER ]<br />
@@ -19,7 +25,7 @@ function Footer() {
                     BACK | 권지수 노승주 방윤서<br />
                 </div>
                 <div className='footerTestImg'>
-                    <img src={gihub} />
+                    <img src={gihubIcon} />
                 </div>
             </div>
         </div>
