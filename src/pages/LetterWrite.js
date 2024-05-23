@@ -8,7 +8,7 @@ function LetterWrite(){
     document.body.style.backgroundImage = `url(${bgImg})`
     return (
         <div>
-            <Header where={'basic'}/>
+            <Header position={'basic'}/>
             <Letter/>
             {/* <Footer/> */}
         </div>

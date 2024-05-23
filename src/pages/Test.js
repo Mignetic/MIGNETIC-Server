@@ -16,7 +16,7 @@ function Test() {
 
     return (
         <div>
-            <Header where={'basic'} />
+            <Header position={'basic'} />
             <div className="Test">
                 <div className='testboxContainer'>
                     <img src={testbox} />
