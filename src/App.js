@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import TestSelect from './pages/TestSelect'
 import Test from './pages/Test'
 import Hotplace from './pages/Hotplace'
+import LetterWrite from './pages/LetterWrite'
 
 import PositionInput from './components/PositionInput'
 
