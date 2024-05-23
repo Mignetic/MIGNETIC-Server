@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Home from './pages/Home'
 import TestSelect from './pages/TestSelect'
 import Test from './pages/Test'
+import LetterWrite from './pages/LetterWrite'
 
 import PositionInput from './components/PositionInput'
 
@@ -16,6 +17,7 @@ function App() {
           <Route path='/test' element={<Test />}></Route>
 
           <Route path='/positioninput' element={<PositionInput />}></Route>
+          <Route path='/letterwrite' element={<LetterWrite />}></Route>
         </Routes>
       </div>
     </BrowserRouter>
