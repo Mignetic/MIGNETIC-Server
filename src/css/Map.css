@@ -1,11 +1,4 @@
-.hot-place{
-}
-
-.header{
-    z-index: 100;
-}
-
-/* .full-display{
+.full-display{
     top: 0;
     display: flex;
     justify-content: center;
@@ -69,4 +62,4 @@
     height: 819px;
     border-radius: 10px;
     z-index: 1;
-} */
+}
