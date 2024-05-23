@@ -6,6 +6,8 @@ import Test from './pages/Test'
 import Hotplace from './pages/Hotplace'
 import LetterWrite from './pages/LetterWrite'
 
+//test
+
 import PositionInput from './components/PositionInput'
 
 function App() {
