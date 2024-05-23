@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom'
 
 import Logo from '../images/icons/logo.png'
 
-function Header({ where }) {
-    const type = ['home', 'basic'].includes(where) ? where : 'basic'
+function Header({ position }) {
+    const type = ['home', 'basic'].includes(position) ? position : 'basic'
 
     return (
         <div className="Header">

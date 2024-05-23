@@ -7,12 +7,12 @@ import btn from '../images/select-btn.png'
 function PositionInput() {
     document.body.style.backgroundImage = `url(${bgImg})`
     const navigate = useNavigate()
-    const location = useLocation();
+    const location = useLocation()
 
-    const position1 = location.state?.position1 || 'school';
+    const position1 = location.state?.position1 || 'school'
     const type1 = ['school', 'outsider'].includes(position1) ? position1 : 'school'
 
-    const position2 = location.state?.position2 || 'student';
+    const position2 = location.state?.position2 || 'student'
     const type2 = ['student', 'teacher'].includes(position2) ? position2 : 'student'
 
     const inputPlaceholder = (type2) => {
@@ -20,13 +20,17 @@ function PositionInput() {
         else if (type2 === 'teacher') return '과목'
     }
 
+    let types
+    if (type1 === 'school') types = type2 === 'student' ? 'student' : 'teacher'
+    else if (type1 === 'outsider') types = 'outsider'
+
     const handleSubmit = () => {
-        navigate('/test')
+        navigate('/test', { state: {types} })
     }
 
     return (
         <div>
-            <Header where={'basic'} />
+            <Header position={'basic'} />
             <div className='PositionInput'>
                 {
                     type1 === 'school' ? (
@@ -60,7 +64,6 @@ function PositionInput() {
                     <input className='inputCheck' type="checkbox" />
                 </div>
                 <button className='testSubmitBtn' onClick={handleSubmit}><img src={btn} /><p>검사하기</p></button>
-
             </div>
         </div>
     )
