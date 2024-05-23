@@ -10,7 +10,7 @@ function Home() {
     document.body.style.backgroundImage = `url(${bgImg})`
     return (
         <div>
-            <Header where={'home'} />
+            <Header position={'home'} />
             <div className="Home">
                 <img src={logo} className='homeLogo' />
             </div>

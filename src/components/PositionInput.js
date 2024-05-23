@@ -27,10 +27,10 @@ function PositionInput() {
     const handleSubmit = () => {
         navigate('/test', { state: {types} })
     }
-    
+
     return (
         <div>
-            <Header where={'basic'} />
+            <Header position={'basic'} />
             <div className='PositionInput'>
                 {
                     type1 === 'school' ? (
