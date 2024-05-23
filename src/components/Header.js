@@ -17,7 +17,7 @@ function Header({ position }) {
                             <ul>
                                 <li><Link to='/testselect'>검사하기</Link></li>
                                 <li><Link to='/'>MIGNETIC</Link></li>
-                                <li><Link to=''>핫플보기</Link></li>
+                                <li><Link to='/Hotplace'>핫플보기</Link></li>
                             </ul>
                         </nav>
                     </div>
