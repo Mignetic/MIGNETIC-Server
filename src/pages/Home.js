@@ -1,4 +1,4 @@
-// import bgImg from '../images/home-bg.png'
+import bgImg from '../images/home-bg.png'
 import '../css/common/Index.css'
 import '../css/Home.css'
 
@@ -6,8 +6,8 @@ import Header from '../components/Header'
 import logo from '../images/icons/home-logo.png'
 
 function Home() {
-    document.body.style.backgroundColor = '#8044FF'
-    // document.body.style.backgroundImage = `url(${bgImg})`
+    // document.body.style.backgroundColor = '#8044FF'
+    document.body.style.backgroundImage = `url(${bgImg})`
     return (
         <div>
             <Header where={'home'} />

@@ -1,4 +1,5 @@
 import '../css/Test.css'
+import '../css/common/Index.css'
 
 import bgImg from '../images/test-bg.png'
 import testbox from '../images/icons/test-textbox.png'
