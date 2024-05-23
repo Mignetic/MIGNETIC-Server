@@ -24,7 +24,7 @@
     margin: 0;
     text-align: center;
     white-space: nowrap;
-    font-family: 'AppleSDGothicNeo-low';
+    font-family: 'AppleSDGothicNeo-low' !important;
 }
 
 .testboxContainer p br {

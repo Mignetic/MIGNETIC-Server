@@ -1,8 +1,19 @@
+@font-face {
+    font-family: 'AppleSDGothicNeo';
+    src: url('../../fonts/AppleSDGothicNeoSB.ttf') format("truetype");
+}
+
+@font-face {
+    font-family: 'AppleSDGothicNeo-low';
+    src: url('../../fonts/AppleSDGothicNeoR.ttf') format("truetype");
+}
+
 body {
     background-size: cover;
     background-repeat: no-repeat;
     margin: 0;
     padding: 0;
+    font-family: 'AppleSDGothicNeo';
 }
 
 button {
@@ -21,15 +32,7 @@ a {
     text-decoration: none;
 }
 
-@font-face {
-    font-family: 'AppleSDGothicNeo';
-    src: url('../../fonts/AppleSDGothicNeoSB.ttf') format("truetype");
-}
 
-@font-face {
-    font-family: 'AppleSDGothicNeo-low';
-    src: url('../../fonts/AppleSDGothicNeoR.ttf') format("truetype");
-}
 /* 
 @font-face {
     font-family: AppleSDGothicNeo;
