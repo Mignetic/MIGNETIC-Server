@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import '../css/PositionSelect.css'
 import btn from '../images/select-btn.png'
 
+import '../css/common/Index.css'
+
 function PositionSelect() {
     const navigate = useNavigate()
 

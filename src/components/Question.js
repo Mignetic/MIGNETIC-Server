@@ -2,7 +2,7 @@ import ask from '../images/test-askbtn.png';
 import arrowBtn from '../images/icons/test-arrowBtn.png';
 import '../css/Question.css';
 
-const questions = [
+const questions_student = [
     {
         question: "내 스타일에 가까운 선생님은?",
         answers: ["당근 주는 지훈쌤", "채찍 주는 규정쌤", "공주님 시켜주는 재민쌤"]
@@ -45,16 +45,103 @@ const questions = [
     }
 ];
 
+const questions_teacher = [
+    {
+        question: "더 선호하는 학생은?",
+        answers: ["수업에 잘 참여하지 않지만 성적이 좋은 학생", "수업에 잘 참여하지만 성적은 낮은 학생"]
+    },
+    {
+        question: "내가 더 선호하는 것은?",
+        answers: ["하루에 수업 5개 들어가기", "큰 행사 담당하기"]
+    },
+    {
+        question: "더 듣고 싶은 것은",
+        answers: ["울면서 위로해달라는 카리나", "좋은 소식이 있다는 이재용"]
+    },
+    {
+        question: "수업 중에 더 싫은 상황은?",
+        answers: ["모든 학생이 자기", "모든 학생이 딴짓하기"]
+    },
+    {
+        question: "더 선호하는 퇴근길은?",
+        answers: ["1시간 30분 지하철에서 앉아서 편안하게 집가기", "40분 사람 꽉 찬 지옥철타고 집가기"]
+    },
+    {
+        question: "더 싫은 것은?",
+        answers: ["야근하기", "방과후 수업하기"]
+    },
+    {
+        question: "하나만 선택해야 한다면?",
+        answers: ["한 학생과 3시간 상담하기", "한 학생과 5분 상담하기"]
+    },
+    {
+        question: "더 이루고 싶은 것은?",
+        answers: ["전교 꼴등 대기업 취업시키기", "올 9등급 학생 올 1등급 시키기"]
+    },
+    {
+        question: "더 보고싶은 상황은?",
+        answers: ["매일 아침 펼쳐지는 1학년 치정 로맨스", "매일 아침 펼쳐지는 3학년 스릴러 취업기"]
+    },
+    {
+        question: "더 싫은 상황은?",
+        answers: ["생기부 쓰고 있는데 컴퓨터 꺼지기", "시험 출제 중에 컴퓨터 꺼지기"]
+    }
+]
+
+const questions_outsider= [
+    {
+        question: "더 나은 것은?",
+        answers: ["1시간 30분 지하철에서 앉아서 편안하게 집가기", "40분 사람 꽉 찬 지옥철타고 집가기"]
+    },
+    {
+        question: "토마토",
+        answers: ["토맛 토마토", "토마토 맛토"]
+    },
+    {
+        question: "더 뽑고 싶은 학생은?",
+        answers: ["코딩 실력이 매우 좋지만 사회성이 부족한 학생", "코딩 실력은 조금 부족하지만 사회성 좋은 학생"]
+    },
+    {
+        question: "더 원하는 것은?",
+        answers: ["100억부재 유병재", "무일푼 차은우"]
+    },
+    {
+        question: "더 뽑고 싶은 것은?",
+        answers: ["성적이 좋은 학생", "면접을 잘 본 학생"]
+    },
+    {
+        question: "더 이루고 싶은 것은?",
+        answers: ["원하는 연봉 받기", "업계 최고 되기"]
+    },
+    {
+        question: "더 원하는 것은?",
+        answers: ["사내식당에서 밥 공짜로 먹기", "맛있는 밥 돈 주고 먹기"]
+    },
+    {
+        question: "더 어색한 상황은?",
+        answers: ["나보다 어린 사수", "나보다 나이 많은 후임"]
+    },
+    {
+        question: "더 나은 상황은?",
+        answers: ["연봉 그대로 매일 칼퇴", "연봉 2배 매일 야근"]
+    },
+    {
+        question: "더 싫은 상황은?",
+        answers: ["나 빼고 다 천재인 팀에서 숨쉬듯 자괴감 느끼기", "내가 유일한 희망인 팀에서 혼자 밭 가는 소처럼 일하기"]
+    }
+]
+
 function shuffle(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
+    for(let i=0; i<array.length; i++) {
+        for(let j=0; j<array[i].length; j++) {
+            [array[i], array[j]] = [array[j], array[i]];
+        }
     }
     return array;
 }
 
 function Question() {
-    const shuffledQuestions = shuffle([...questions]);
+    const shuffledQuestions = shuffle([...questions_student]);
 
     return (
         <div>
