@@ -33,13 +33,13 @@
 
 .letterInputText{
     width: 730px;
-    height: 320px;
+    height: 310px;
     resize: none;
     position: absolute;
     z-index: 5;
     background-color: transparent;
     border: 0;
-    margin-top: 70px;
+    margin-top: 80px;
     font-size: 1.25rem;
 }
 
