@@ -22,6 +22,7 @@ function App() {
 
 
           <Route path='/positioninput' element={<PositionInput />}></Route>
+          <Route path='/letterwrite' element={<LetterWrite />}></Route>
         </Routes>
       </div>
     </BrowserRouter>

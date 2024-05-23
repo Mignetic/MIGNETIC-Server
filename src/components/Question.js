@@ -1,6 +1,7 @@
 import ask from '../images/test-askbtn.png';
 import arrowBtn from '../images/icons/test-arrowBtn.png';
 import '../css/Question.css';
+import { useLocation } from 'react-router-dom';
 
 const questions_student = [
     {
@@ -88,7 +89,7 @@ const questions_teacher = [
     }
 ]
 
-const questions_outsider= [
+const questions_outsider = [
     {
         question: "더 나은 것은?",
         answers: ["1시간 30분 지하철에서 앉아서 편안하게 집가기", "40분 사람 꽉 찬 지옥철타고 집가기"]
@@ -131,24 +132,33 @@ const questions_outsider= [
     }
 ]
 
-function shuffle(array) {
-    for(let i=0; i<array.length; i++) {
-        for(let j=0; j<array[i].length; j++) {
+function questionList(array) {
+    for (let i = 0; i < array.length; i++) {
+        for (let j = 0; j < array[i].length; j++) {
             [array[i], array[j]] = [array[j], array[i]];
         }
     }
-    return array;
+    return array
 }
 
 function Question() {
-    const shuffledQuestions = shuffle([...questions_student]);
+    const location = useLocation()
+    const types = location.state?.types
+    console.log("types:", types)
+
+    let questionssss = []
+    if (types === 'student') questionssss = questions_student
+    else if (types === 'teacher') questionssss = questions_teacher
+    else if (types === 'outsider') questionssss = questions_outsider
+
+    const shuffledQuestions = questionList([...questionssss])
 
     return (
         <div>
             {shuffledQuestions.map((item, index) => (
                 <div className="Question" key={index}>
                     <div className='askContainer'>
-                        <img src={ask} alt="Ask Button" />
+                        <img src={ask} />
                         <p>{item.question}</p>
                     </div>
 
@@ -162,10 +172,10 @@ function Question() {
                 </div>
             ))}
             <div className='nextContainer'>
-                <button className='nextBtn'>다음<img src={arrowBtn} alt="Arrow Button" /></button>
+                <button className='nextBtn'>다음<img src={arrowBtn} /></button>
             </div>
         </div>
-    );
+    )
 }
 
 export default Question
