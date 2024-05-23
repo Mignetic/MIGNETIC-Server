@@ -1,3 +1,66 @@
+.click-marker {
+    position: absolute;
+    margin-top: 90px;
+    left: 144px;
+    width: 465px;
+    height: 819px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    z-index: 1000;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+    border-radius: 10px 0px 0px 10px;
+}
+.click-marker > * {
+    padding: 0px 58px;
+}
+.marker-title{
+    font-family: 'AppleSDGothicNeoB';
+    font-weight: bold;
+    font-size: 32px;
+
+    margin-top: 28px;
+}
+
+.marker-detail{
+    margin-top: 16px;
+}
+
+.recommendation{
+    margin-top: 37px;
+}
+.developer{
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    /* flex-direction: row; */
+    margin: 0px 62px;
+    background-color: #E3FFFA;
+    padding: 0px 39px   ;
+
+}
+.developer > 
+.developer-profile,
+.developer-name-review {
+}
+.developer-profile{
+    margin-top: 15px;
+    width: 35px;
+    height: 35px;
+}
+.developer-name-review{
+    margin: 0;
+}
+.developer-name{
+
+}
+
+.developer-review{
+
+}
+
+.developer-hr{
+}
+
 .full-display{
     top: 0;
     display: flex;
@@ -45,7 +108,7 @@
     
     width: 277px;
     height: 69px;
-    border-radius: 15px;
+    border-radius: 15px 15px 0px 0px;
 
     font-family: 'AppleSDGothicNeoB';
     font-weight: bold;

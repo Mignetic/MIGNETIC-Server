@@ -1,111 +1,129 @@
 import React, { useEffect, useState } from "react";
 import { markerdata } from '../components/markerData';
+import '../css/Map.css';
 
-import '../css/Map.css'
+import pf from '../images/pf.png';
 
-function Map(){
-//카카오 맵 API를 사용할 수 있도록 선언
-const { kakao } = window;
+function Map() {
+    // 카카오 맵 API를 사용할 수 있도록 선언
+    const { kakao } = window;
     
-// 버튼의 활성화 상태, 맵 객체, 맵의 확대 수준 및 중심 위치, 마커, 필터링된 마커 데이터를 관리하는 state 선언
-const [activeButton, setActiveButton] = useState(null);
-const [map, setMap] = useState(null);
-const [mapZoom, setMapZoom] = useState(2);
-const [mapCenter, setMapCenter] = useState({ lat: 37.4667835831981, lng: 126.932529286133 });
-const [markers, setMarkers] = useState([]); // 마커들을 관리하는 state 추가
-const [filteredMarkerData, setFilteredMarkerData] = useState(markerdata);
+    // State 선언
+    const [activeButton, setActiveButton] = useState(null);
+    const [map, setMap] = useState(null);
+    const [mapZoom, setMapZoom] = useState(2);
+    const [mapCenter, setMapCenter] = useState({ lat: 37.4667835831981, lng: 126.932529286133 });
+    const [markers, setMarkers] = useState([]);
+    const [filteredMarkerData, setFilteredMarkerData] = useState(markerdata);
+    const [activeMarker, setActiveMarker] = useState(null);
 
-new kakao.maps.Marker({
-    map: map,
-    position: new kakao.maps.LatLng(37.4667835831981,126.932529286133)
-})
+    
+    useEffect(() => {
+        if (!map) return;
+        updateMap();
+    }, [filteredMarkerData]);
 
-// 필터링된 마커 데이터가 변경될 때마다 맵 업데이트
-useEffect(() => {
-    if (!map) return;
-    updateMap();
-}, [filteredMarkerData]);
+    useEffect(() => {
+        mapscript();
+    }, []);
 
-// 컴포넌트가 마운트될 때마다 맵 초기화
-useEffect(() => {
-    mapscript();
-}, []);
-
-// 맵을 초기화하고 맵 객체를 생성하는 함수
-const mapscript = () => {
- const container = document.getElementById('map');
- const options = {
-     center: new kakao.maps.LatLng(mapCenter.lat, mapCenter.lng),
-     level: mapZoom,
+    const mapscript = () => {
+        const container = document.getElementById('map');
+        const options = {
+            center: new kakao.maps.LatLng(mapCenter.lat, mapCenter.lng),
+            level: mapZoom,
+        };
+        const newMap = new kakao.maps.Map(container, options);
+        setMap(newMap);
     };
-    const newMap = new kakao.maps.Map(container, options);
-    setMap(newMap);
-};
 
-// 맵에 마커를 업데이트하는 함수
-const updateMap = () => {
-    if (!map) return;
-    
-    // 이전에 생성된 모든 마커 제거
-    markers.forEach(marker => marker.setMap(null));
-    
-    // 클릭한 버튼에 해당하는 값만 필터링하여 마커 생성
-    const newMarkers = filteredMarkerData.map((el) => {
+    const updateMap = () => {
+        if (!map) return;
         
-        if (el.value === activeButton) {
-            return new kakao.maps.Marker({
-             map: map,
-             position: new kakao.maps.LatLng(el.lat, el.lng),
-            });
-        }
-    });
-    setMarkers(newMarkers.filter(marker => marker !== undefined));
-};
+        markers.forEach(marker => marker.setMap(null));
+        
+        const newMarkers = filteredMarkerData.map((el) => {
+            if (el.value === activeButton) {
+                const marker = new kakao.maps.Marker({
+                    map: map,
+                    position: new kakao.maps.LatLng(el.lat, el.lng),
+                });
 
-// 버튼 클릭 시 해당 버튼을 활성화 상태로 설정하고 필터링된 마커 데이터 업데이트
-const handleButtonClick = (buttonValue) => {
-    setActiveButton(buttonValue);
-    setFilteredMarkerData(markerdata.filter(data => data.value === buttonValue));
-};
+                // 마커 클릭 이벤트 등록
+                kakao.maps.event.addListener(marker, 'click', () => {
+                    setActiveMarker(el); // 클릭한 마커 데이터 설정
+                });
 
+                return marker;
+            }
+        });
 
-return(
-    <div className="hot-place">
-    <div className="full-display">
-            <div className="btns">
-                <div className={activeButton === '학교'}></div>
-                <button
-                    className={activeButton === '카페' ? 'active' : ''}
-                    onClick={() => handleButtonClick('카페')}
+        setMarkers(newMarkers.filter(marker => marker !== undefined));
+    };
+
+    const handleButtonClick = (buttonValue) => {
+        setActiveButton(buttonValue);
+        setFilteredMarkerData(markerdata.filter(data => data.value === buttonValue));
+    };
+
+    return (
+        <div className="hot-place">
+            <div className="full-display">
+                <div className="btns">
+                    <div className={activeButton === '학교'}></div>
+                    <button
+                        className={activeButton === '카페' ? 'active' : ''}
+                        onClick={() => handleButtonClick('카페')}
                     >
-                    카페
-                </button>
-                <button
-                    className={activeButton === '편의점' ? 'active' : ''}
-                    onClick={() => handleButtonClick('편의점')}
+                        카페
+                    </button>
+                    <button
+                        className={activeButton === '편의점' ? 'active' : ''}
+                        onClick={() => handleButtonClick('편의점')}
                     >
-                    편의점
-                </button>
-                <div className="btn-margin"></div>
-                <button
-                    className={activeButton === '디져트' ? 'active' : ''}
-                    onClick={() => handleButtonClick('디져트')}
+                        편의점
+                    </button>
+                    <div className="btn-margin"></div>
+                    <button
+                        className={activeButton === '디져트' ? 'active' : ''}
+                        onClick={() => handleButtonClick('디져트')}
                     >
-                    디져트
-                </button>
-                <button
-                    className={activeButton === '맛집' ? 'active' : ''}
-                    onClick={() => handleButtonClick('맛집')}
+                        디져트
+                    </button>
+                    <button
+                        className={activeButton === '맛집' ? 'active' : ''}
+                        onClick={() => handleButtonClick('맛집')}
                     >
-                    맛집
-                </button>
+                        맛집
+                    </button>
+                </div>
+                <div className="place">
+                    <div id="map" className="map-class"></div>
+                </div>
+                {activeMarker && (
+                    <div className="click-marker">
+                        <p className="marker-title">{activeMarker.title}</p>
+                        <div className="marker-img-detail">
+
+                            <p className="marker-detail">
+                                여기는 미림분식에 대한 글을 써주세요 여기는 미림분식에 대한 글을 써주세요
+여기는 미림분식에 대한 글을 써주세요 여기는 미림분식에 대한 글을 써주세요 여기는 미림분식에 대한 글을 써주세요 
+여기는 미림분식에 대한 글을 써주세요여기는 미림분식에 대한 글을 써주세요 여기는 미림분식에 대한 글을 써주세요</p>
+                        </div>
+                        <p className="recommendation"> 추천글 </p>
+                        <div className="developer">
+                            <img src={pf} className="developer-profile"/>
+                            <div className="developer-name-review">
+                                <p className="developer-name">양지아</p>
+                                <p className="developer-review">나보고어떡하라고어떻하라고어뜩하라고엉뜨켜라고우뚝하라고</p>
+                                <hr className="developer-hr"></hr>
+                            </div>
+                        </div>
+                    </div>
+                )}
             </div>
-        <div className="place">
-            <div id="map" className="map-class"></div>
         </div>
-    </div>
-</div>
-)
+    );
 }
 
 export default Map;
