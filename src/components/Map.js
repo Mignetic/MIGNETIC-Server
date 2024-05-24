@@ -48,31 +48,37 @@ function Map() {
         markers.forEach(marker => marker.setMap(null));
 
         const newMarkers = filteredMarkerData.map((el) => {
-            if (el.value === activeButton) {
-                const marker = new kakao.maps.Marker({
-                    map: map,
-                    position: new kakao.maps.LatLng(el.lat, el.lng),
-                });
+            const marker = new kakao.maps.Marker({
+                map: map,
+                position: new kakao.maps.LatLng(el.lat, el.lng),
+            });
 
-                // 마커 클릭 이벤트 등록
-                kakao.maps.event.addListener(marker, 'click', () => {
-                    setActiveMarker(el); // 클릭한 마커 데이터 설정
-                });
+            // 마커 클릭 이벤트 등록
+            kakao.maps.event.addListener(marker, 'click', () => {
+                setActiveMarker(el); // 클릭한 마커 데이터 설정
+            });
 
-                return marker;
-            }
+            return marker;
         });
 
-        setMarkers(newMarkers.filter(marker => marker !== undefined));
+        setMarkers(newMarkers);
     };
 
+    
     const handleButtonClick = (buttonValue) => {
-        setActiveButton(buttonValue);
-        setFilteredMarkerData(markerdata.filter(data => data.value === buttonValue));
+        // 현재 activeButton과 새로 클릭된 버튼의 값이 같으면 모든 마커를 보여줌
+        if (activeButton === buttonValue) {
+            setFilteredMarkerData(markerdata);
+            closeActiveMarker(); 
+            setActiveButton(null); // 버튼 상태를 초기화
+        } else {
+            setActiveButton(buttonValue);
+            setFilteredMarkerData(markerdata.filter(data => data.value === buttonValue));
+        }
     };
 
 
-    // 닫기 버튼 클릭 시 activeMarker와 함께 사라지도록 함수 구현
+    // 닫기 버튼 클릭 시 activeMarker를 null로 설정하여 사라지게 함
     const closeActiveMarker = () => {
         const markerContainer = document.querySelector('.click-marker-container');
         markerContainer.classList.add('fade-out');
@@ -80,7 +86,6 @@ function Map() {
             setActiveMarker(null);
         }, 800);
     };
-
     return (
         <div className="hot-place">
             <div className="full-display">
@@ -146,11 +151,12 @@ function Map() {
                                         </div>
                                     </div>
                                     
+                                    
                                 </div>
                             </div>
                         </div>
                         {/* 닫기 버튼 */}
-                        <button className="close-btn" onClick={() => closeActiveMarker()}><img src={markerbtn} style={{ transform: 'rotate(180deg)' }} alt="Close" /></button>
+                        <button className="close-btn" onClick={() => closeActiveMarker()}><img src={markerbtn} alt="Close" /></button>
                     </div>
                 )}
             </div>
