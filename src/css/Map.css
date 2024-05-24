@@ -1,12 +1,54 @@
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px); /* 왼쪽에서 시작 */
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0); /* 왼쪽으로 이동하지 않고 보이게 됨 */
+    }
+}
+
+@keyframes fadeOutLeft {
+    from {
+        opacity: 1;
+        transform: translateX(0); /* 현재 위치에서 시작 */
+    }
+    to {
+        opacity: 0;
+        transform: translateX(-20px); /* 왼쪽으로 사라짐 */
+    }
+}
+
+
+.click-marker-container.fade-out {
+    animation: fadeOutLeft 0.8s ease; 
+}
+
+.click-marker-container {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    z-index: 1000;
+    left: 357px;
+    animation: fadeInLeft 0.8s ease;
+
+}
+
+.click-marker-container >
+.close-btn{
+    z-index: 900;
+    left: 8000px;
+}
+
 .click-marker {
     position: absolute;
     margin-top: 90px;
-    left: 357px;
     width: 465px;
     height: 819px;
     background-color: rgb(255, 255, 255);
     color: rgb(0, 0, 0);
-    z-index: 1000;
+    /* z-index: 1000; */
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
     border-radius: 10px 0px 0px 10px;
 

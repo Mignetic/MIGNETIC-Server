@@ -8,7 +8,7 @@ import markerbtn from '../images/marker-btn.png';
 function Map() {
     // 카카오 맵 API를 사용할 수 있도록 선언
     const { kakao } = window;
-    
+
     // State 선언
     const [activeButton, setActiveButton] = useState(null);
     const [map, setMap] = useState(null);
@@ -18,7 +18,6 @@ function Map() {
     const [filteredMarkerData, setFilteredMarkerData] = useState(markerdata);
     const [activeMarker, setActiveMarker] = useState(null);
 
-    
     useEffect(() => {
         if (!map) return;
         updateMap();
@@ -45,9 +44,9 @@ function Map() {
 
     const updateMap = () => {
         if (!map) return;
-        
+
         markers.forEach(marker => marker.setMap(null));
-        
+
         const newMarkers = filteredMarkerData.map((el) => {
             if (el.value === activeButton) {
                 const marker = new kakao.maps.Marker({
@@ -70,6 +69,16 @@ function Map() {
     const handleButtonClick = (buttonValue) => {
         setActiveButton(buttonValue);
         setFilteredMarkerData(markerdata.filter(data => data.value === buttonValue));
+    };
+
+
+    // 닫기 버튼 클릭 시 activeMarker와 함께 사라지도록 함수 구현
+    const closeActiveMarker = () => {
+        const markerContainer = document.querySelector('.click-marker-container');
+        markerContainer.classList.add('fade-out');
+        setTimeout(() => {
+            setActiveMarker(null);
+        }, 800);
     };
 
     return (
@@ -107,68 +116,41 @@ function Map() {
                     <div id="map" className="map-class"></div>
                 </div>
                 {activeMarker && (
-                    <div className="click-marker">
-                        <div className="marker-setting">
-                        <p className="marker-title">{activeMarker.title}</p>
-                        <div className="marker-img-detail">
-
-                            <li className="marker-detail">
-                                여기는 미림분식에 대한 글을 써주세요 여기는 미림분식에 대한 글을 써주세dy
-                            </li>
-                            <li className="marker-detail">
-                            여기는 미림분식에 대한 글을 써주세요 여기는 미림분식에 대한 글을 써주세요
-                            </li>
-                            <li className="marker-detail">
-                            여기는 미림분식에 대한 글을 써주세요 여기는 미림분식에 대한 글을 써주세요
-                            </li>
-                        </div>
-                        <p className="recommendation"> 추천글 </p>
-                        <div className="developer-collection">
-                            <div className="developer">
-                            <img src={pf} className="developer-profile"/>
-                            <div className="developer-name-review">
-                                <p className="developer-name">양지아</p>
-                                <p className="developer-review">나보고어떡하라고어떻하라고어뜩하라고엉뜨켜라고우뚝하라고</p>
-                                <hr className="developer-hr"></hr>
-                            </div>
-                            </div>
-                            {/* 삭제 예정 */}
-                            <div className="developer">
-                            <img src={pf} className="developer-profile"/>
-                            <div className="developer-name-review">
-                                <p className="developer-name">양지아</p>
-                                <p className="developer-review">나보고어떡하라고어떻하라고어뜩하라고엉뜨켜라고우뚝하라고</p>
-                                <hr className="developer-hr"></hr>
-                            </div>
-                            </div>
-                            <div className="developer">
-                                <img src={pf} className="developer-profile"/>
-                                <div className="developer-name-review">
-                                    <p className="developer-name">양지아</p>
-                                    <p className="developer-review">나보고어떡하라고어떻하라고어뜩하라고엉뜨켜라고우뚝하라고</p>
-                                    <hr className="developer-hr"></hr>
+                    <div className="click-marker-container">
+                        {/* activeMarker */}
+                        <div className="click-marker">
+                            <div className="marker-setting">
+                                {/* 마커 제목 및 내용 */}
+                                <p className="marker-title">{activeMarker.title}</p>
+                                <div className="marker-img-detail">
+                                    <li className="marker-detail">
+                                        여기는 미림분식에 대한 글을 써주세요 여기는 미림분식에 대한 글을 써주세dy
+                                    </li>
+                                    <li className="marker-detail">
+                                        여기는 미림분식에 대한 글을 써주세요 여기는 미림분식에 대한 글을 써주세요
+                                    </li>
+                                    <li className="marker-detail">
+                                        여기는 미림분식에 대한 글을 써주세요 여기는 미림분식에 대한 글을 써주세요
+                                    </li>
+                                </div>
+                                {/* 추천글 */}
+                                <p className="recommendation"> 추천글 </p>
+                                {/* 개발자 정보 */}
+                                <div className="developer-collection">
+                                    <div className="developer">
+                                        <img src={pf} className="developer-profile" />
+                                        <div className="developer-name-review">
+                                            <p className="developer-name">양지아</p>
+                                            <p className="developer-review">나보고어떡하라고어떻하라고어뜩하라고엉뜨켜라고우뚝하라고</p>
+                                            <hr className="developer-hr"></hr>
+                                        </div>
+                                    </div>
+                                    
                                 </div>
                             </div>
-                            <div className="developer">
-                            <img src={pf} className="developer-profile"/>
-                            <div className="developer-name-review">
-                                <p className="developer-name">양지아</p>
-                                <p className="developer-review">나보고어떡하라고어떻하라고어뜩하라고엉뜨켜라고우뚝하라고</p>
-                                <hr className="developer-hr"></hr>
-                            </div>
-                            </div>
-                            <div className="developer">
-                            <img src={pf} className="developer-profile"/>
-                            <div className="developer-name-review">
-                                <p className="developer-name">양지아</p>
-                                <p className="developer-review">나보고어떡하라고어떻하라고어뜩하라고엉뜨켜라고우뚝하라고</p>
-                                <hr className="developer-hr"></hr>
-                            </div>
-                            </div>
                         </div>
-
-                        </div>
-                        {/* <button className="marker-btn"><img src={markerbtn}></img></button> */}
+                        {/* 닫기 버튼 */}
+                        <button className="close-btn" onClick={() => closeActiveMarker()}><img src={markerbtn} style={{ transform: 'rotate(180deg)' }} alt="Close" /></button>
                     </div>
                 )}
             </div>
