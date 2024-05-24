@@ -1,26 +1,15 @@
-import { useNavigate } from 'react-router-dom'
-
-
 import Header from '../components/Header'
 
-
-
 import envelope from '../images/envelope.png'
-import letterPaper from '../images/letterPaper.png'
-
-
 
 import '../css/Letter.css'
 
 function Letter(){
 
-    const navigate = useNavigate()
-
     const handleTransmission = () =>{
 
         const letterText = document.querySelector('.letterInputText').value
         console.log(letterText)
-        navigate('/noticeboard')
 
     }
 
