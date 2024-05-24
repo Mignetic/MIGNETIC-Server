@@ -9,8 +9,12 @@
     z-index: 1000;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
     border-radius: 10px 0px 0px 10px;
+
+    overflow-y: auto;
 }
-.click-marker > * {
+.click-marker > 
+.marker-title,
+.marker-detail {
     padding: 0px 58px;
 }
 .marker-title{
@@ -19,6 +23,7 @@
     font-size: 32px;
 
     margin-top: 28px;
+    margin-left: 58px;
 }
 
 .marker-detail{
@@ -27,20 +32,18 @@
 
 .recommendation{
     margin-top: 37px;
+    padding-left: 62px;
+
+    font-size: 24px;
 }
+
 .developer{
     display: flex;
     justify-content: center;
-    /* align-items: center; */
-    /* flex-direction: row; */
     margin: 0px 62px;
     background-color: #E3FFFA;
     padding: 0px 39px   ;
 
-}
-.developer > 
-.developer-profile,
-.developer-name-review {
 }
 .developer-profile{
     margin-top: 15px;
@@ -48,6 +51,7 @@
     height: 35px;
 }
 .developer-name-review{
+    font-family: 'AppleSDGothicNeoR';
     margin: 0;
 }
 .developer-name{
