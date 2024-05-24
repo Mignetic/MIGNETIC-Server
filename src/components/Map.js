@@ -24,6 +24,8 @@ function Map() {
     }, [filteredMarkerData]);
 
     useEffect(() => {
+        setFilteredMarkerData(markerdata);
+        updateMap();
         mapscript();
     }, []);
 
@@ -64,12 +66,12 @@ function Map() {
         setMarkers(newMarkers);
     };
 
-    
+
     const handleButtonClick = (buttonValue) => {
         // 현재 activeButton과 새로 클릭된 버튼의 값이 같으면 모든 마커를 보여줌
         if (activeButton === buttonValue) {
             setFilteredMarkerData(markerdata);
-            closeActiveMarker(); 
+            closeActiveMarker();
             setActiveButton(null); // 버튼 상태를 초기화
         } else {
             setActiveButton(buttonValue);
@@ -81,11 +83,15 @@ function Map() {
     // 닫기 버튼 클릭 시 activeMarker를 null로 설정하여 사라지게 함
     const closeActiveMarker = () => {
         const markerContainer = document.querySelector('.click-marker-container');
-        markerContainer.classList.add('fade-out');
-        setTimeout(() => {
-            setActiveMarker(null);
-        }, 800);
+        if (markerContainer) {
+            markerContainer.classList.add('fade-out');
+            setTimeout(() => {
+                setActiveMarker(null);
+            }, 800);
+        }
     };
+
+    
     return (
         <div className="hot-place">
             <div className="full-display">
@@ -150,8 +156,8 @@ function Map() {
                                             <hr className="developer-hr"></hr>
                                         </div>
                                     </div>
-                                    
-                                    
+
+
                                 </div>
                             </div>
                         </div>
