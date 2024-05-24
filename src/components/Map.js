@@ -3,6 +3,7 @@ import { markerdata } from '../components/markerData';
 import '../css/Map.css';
 
 import pf from '../images/pf.png';
+import markerbtn from '../images/marker-btn.png';
 
 function Map() {
     // 카카오 맵 API를 사용할 수 있도록 선언
@@ -26,6 +27,11 @@ function Map() {
     useEffect(() => {
         mapscript();
     }, []);
+
+    const marker = new kakao.maps.Marker({
+        map: map,
+        position: new kakao.maps.LatLng(37.4667835831981, 126.932529286133),
+    });
 
     const mapscript = () => {
         const container = document.getElementById('map');
@@ -102,23 +108,67 @@ function Map() {
                 </div>
                 {activeMarker && (
                     <div className="click-marker">
+                        <div className="marker-setting">
                         <p className="marker-title">{activeMarker.title}</p>
                         <div className="marker-img-detail">
 
-                            <p className="marker-detail">
-                                여기는 미림분식에 대한 글을 써주세요 여기는 미림분식에 대한 글을 써주세요
-여기는 미림분식에 대한 글을 써주세요 여기는 미림분식에 대한 글을 써주세요 여기는 미림분식에 대한 글을 써주세요 
-여기는 미림분식에 대한 글을 써주세요여기는 미림분식에 대한 글을 써주세요 여기는 미림분식에 대한 글을 써주세요</p>
+                            <li className="marker-detail">
+                                여기는 미림분식에 대한 글을 써주세요 여기는 미림분식에 대한 글을 써주세dy
+                            </li>
+                            <li className="marker-detail">
+                            여기는 미림분식에 대한 글을 써주세요 여기는 미림분식에 대한 글을 써주세요
+                            </li>
+                            <li className="marker-detail">
+                            여기는 미림분식에 대한 글을 써주세요 여기는 미림분식에 대한 글을 써주세요
+                            </li>
                         </div>
                         <p className="recommendation"> 추천글 </p>
-                        <div className="developer">
+                        <div className="developer-collection">
+                            <div className="developer">
                             <img src={pf} className="developer-profile"/>
                             <div className="developer-name-review">
                                 <p className="developer-name">양지아</p>
                                 <p className="developer-review">나보고어떡하라고어떻하라고어뜩하라고엉뜨켜라고우뚝하라고</p>
                                 <hr className="developer-hr"></hr>
                             </div>
+                            </div>
+                            {/* 삭제 예정 */}
+                            <div className="developer">
+                            <img src={pf} className="developer-profile"/>
+                            <div className="developer-name-review">
+                                <p className="developer-name">양지아</p>
+                                <p className="developer-review">나보고어떡하라고어떻하라고어뜩하라고엉뜨켜라고우뚝하라고</p>
+                                <hr className="developer-hr"></hr>
+                            </div>
+                            </div>
+                            <div className="developer">
+                                <img src={pf} className="developer-profile"/>
+                                <div className="developer-name-review">
+                                    <p className="developer-name">양지아</p>
+                                    <p className="developer-review">나보고어떡하라고어떻하라고어뜩하라고엉뜨켜라고우뚝하라고</p>
+                                    <hr className="developer-hr"></hr>
+                                </div>
+                            </div>
+                            <div className="developer">
+                            <img src={pf} className="developer-profile"/>
+                            <div className="developer-name-review">
+                                <p className="developer-name">양지아</p>
+                                <p className="developer-review">나보고어떡하라고어떻하라고어뜩하라고엉뜨켜라고우뚝하라고</p>
+                                <hr className="developer-hr"></hr>
+                            </div>
+                            </div>
+                            <div className="developer">
+                            <img src={pf} className="developer-profile"/>
+                            <div className="developer-name-review">
+                                <p className="developer-name">양지아</p>
+                                <p className="developer-review">나보고어떡하라고어떻하라고어뜩하라고엉뜨켜라고우뚝하라고</p>
+                                <hr className="developer-hr"></hr>
+                            </div>
+                            </div>
                         </div>
+
+                        </div>
+                        {/* <button className="marker-btn"><img src={markerbtn}></img></button> */}
                     </div>
                 )}
             </div>
