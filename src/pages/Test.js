@@ -16,7 +16,7 @@ function Test() {
 
     return (
         <div>
-            <Header where={'basic'} />
+            <Header position={'basic'} />
             <div className="Test">
                 <div className='testboxContainer'>
                     <img src={testbox} />
@@ -29,7 +29,7 @@ function Test() {
                 <img src={arrow} className='arrowImg' />
                 <Question />
             </div>
-            <Footer />
+            <Footer position={'test'}/>
         </div>
     )
 }

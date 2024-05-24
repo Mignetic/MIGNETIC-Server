@@ -9,7 +9,7 @@ function TestSelect() {
     document.body.style.backgroundImage = `url(${bgImg})`
     return (
         <div className="TestSelect">
-            <Header where={'basic'} />
+            <Header position={'basic'} />
             <PositionSelect />
         </div>
     )
