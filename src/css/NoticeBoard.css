@@ -1,10 +1,10 @@
 .noticeBoard-background {
     position: absolute;
-    /* top: 50%;
+    top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); */
-    width: 100%; /* 필요에 따라 조정하세요 */
-    height: 100%; /* 필요에 따라 조정하세요 */
+    transform: translate(-50%, -50%);
+    width: 100%; 
+    height: 100%; 
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -23,14 +23,67 @@
     
 }
 
-.boardBg {
-    background: url(../images/noticeBoard-bg2.png) no-repeat;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -46%);
-    width: 100%;
-    height: 100%;
-    /* object-fit: cover; 필요에 따라 조정하세요 */
-    z-index: -1; 
+.boardLetter {
+    position: relative;
+    width: 80%;
+    height: 70%;
+    top: 240px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 20px; 
+    justify-items: center; 
+    align-items: center; 
+    overflow: auto;
+    
+}
+.boardLetterImg {
+  display: inline-grid;
+  color: white;
+  transition: transform 0.3s;
+  transform: perspective(800px) rotateY(0deg);
+  transform-style: preserve-3d;
+  margin: 30px;
+}
+
+.boardLetterImg:hover {
+  transform: perspective(800px) rotateY(-180deg);
+}
+
+.boardLetterImg > * {
+  grid-area: 1 / 1 / 1 / 1; 
+  backface-visibility: hidden;
+}
+
+.letterBack {
+  width: 350px;
+  height: 216px;
+  background-color: #fff;
+  border: 5px #000 solid;
+  transform: rotateY(180deg);
+}
+
+.letterBack p{
+  font-size: 2.5rem;
+  color: #000;
+}
+
+.leftP{
+  margin-left: 20px;
+}
+
+.rightP{
+  margin-right: 20px;
+  text-align: right;
+}
+
+/* .boardLetterImg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+.boardLetterImg img {
+    width: 350px;
+    height: auto;
+    /* margin: 30px; */
 }
