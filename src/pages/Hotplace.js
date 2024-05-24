@@ -19,7 +19,7 @@ function Hotplace(){
                 <Header where={'basic'} />
             </div>
             <Map />
-        <Footer />
+        {/* <Footer /> */}
     </div>
     )
 }
