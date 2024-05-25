@@ -1,0 +1,9 @@
+.result{
+    overflow-y: auto;
+}
+
+.logoimg{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
