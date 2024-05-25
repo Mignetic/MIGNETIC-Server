@@ -3,16 +3,26 @@ import letterImg from '../images/icons/letterImg.png'
 
 import '../css/NoticeBoard.css'
 
+import { useNavigate } from 'react-router-dom'
+
 
 function NoticeBoard() {
 
+    const navigate = useNavigate();
+
+    const ShowLetter = () =>{
+
+        navigate('/showletter')
+
+    }
+
     return (
-        <div class="noticeBoard-background">
-            <div class="logo-container"><img src={Logo} class=".boardLogo"/></div>
+        <div class="noticeBoardBackground">
+            <div class="logoContainer"><img src={Logo} class=".boardLogo"/></div>
             <div class="boardLetter">
                 <div className='boardLetterImg'>
                     <div className='letterFront'><img src={letterImg}/></div>
-                    <div className='letterBack'><p className='leftP'>To.승주</p><p className='rightP'>from.승주</p></div>
+                    <div className='letterBack' onClick={ShowLetter}><p className='leftP'>To.승주</p><p className='rightP'>from.승주</p></div>
                 </div>
                 <div className='boardLetterImg'>
                     <div className='letterFront'><img src={letterImg}/></div>

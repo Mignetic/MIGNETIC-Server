@@ -6,6 +6,7 @@ import Test from './pages/Test'
 import Hotplace from './pages/Hotplace'
 import LetterWrite from './pages/LetterWrite'
 import Board from './pages/Board'
+import ShowLetter from './pages/ShowLetter'
 
 
 import PositionInput from './components/PositionInput'
@@ -21,6 +22,7 @@ function App() {
           <Route path='/hotplace' element={<Hotplace />}></Route>
           <Route path='/letterwrite' element={<LetterWrite />}></Route>
           <Route path='/board' element={<Board />}></Route>
+          <Route path='/showletter' element={<ShowLetter/>}></Route>
           
 
 
