@@ -47,25 +47,25 @@ function Result() {
                         </div>
                         <div className='friend-graph-name-container'>
                             <div className='friend-graph-container'>
-                                <div className='friend friend-graph-1'>
-                                    <p className='answer-num-1'>9개</p>
+                                <div className='friend-graph friend-graph-1'>
+                                    <p className='answer answer-num-1'>9개</p>
                                     <div className='graph graph-1'></div>
-                                    <p className='friend friend-name-1'>윤서</p>
+                                    <p className='friend-name friend-name-1'>윤서</p>
                                 </div>
-                                <div className='friend friend-graph-2'>
-                                    <p className='answer-num-2'>8개</p>
+                                <div className='friend-graph friend-graph-2'>
+                                    <p className='answer answer-num-2'>8개</p>
                                     <div className='graph graph-2'></div>
-                                    <p className='friend friend-name-2'>엉덩이</p>
+                                    <p className='friend-name friend-name-2'>엉덩이</p>
                                 </div>
-                                <div className='friend friend-graph-3'>
-                                    <p className='answer-num-3'>4개</p>
+                                <div className='friend-graph friend-graph-3'>
+                                    <p className='answer answer-num-3'>4개</p>
                                     <div className='graph graph-3'></div>
-                                    <p className='friend friend-name-3'>뿡뿡</p>
+                                    <p className='friend-name friend-name-3'>뿡뿡</p>
                                 </div>
-                                <div className='friend friend-graph-4'>
-                                    <p className='answer-num-4'>2개</p>
+                                <div className='friend-graph friend-graph-4'>
+                                    <p className='answer answer-num-4'>2개</p>
                                     <div className='graph graph-4'></div>
-                                    <p className='friend friend-name-4'>빵구</p>
+                                    <p className='friend-name friend-name-4'>빵구</p>
                                 </div>
                             </div>
                             <div className='friend-graph-bg'></div>
@@ -75,12 +75,16 @@ function Result() {
                     <div className='graph-tip'>
                         <img src={tipimg} className="tip-img" />
                         <p className='tip-text'>
-                            그래프를 클릭하면 그 친구에게 편지를 쓸 수 있어요!
+                            그래프를 클릭하면 그 친구에게 <br></br>
+                            편지를 쓸 수 있어요!
                         </p>
                     </div>
                 </div>
-                <button className='retry-btn'>검사 다시하기</button>
-                <button className='hotplace'>친구와 핫플 보기</button>
+                <div className='btn-container'>
+                    <button className='retry-btn'>검사 다시하기</button>
+                    <button className='hotplace-btn'>친구와 핫플 보기</button>
+
+                </div>
             </div>
             <Footer />
         </div>
