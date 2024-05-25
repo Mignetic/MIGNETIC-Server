@@ -1,9 +1,210 @@
-.result{
-    overflow-y: auto;
+.result {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    overflow-y: scroll;
 }
 
-.logoimg{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+.logoimg {
+    width: 407px;
+    height: 67px;
+    margin-top: 46px;
+}
+
+.result-container {
+    text-align: center;
+}
+
+.type-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.your-type{
+    font-size: 64px;
+    color: white;
+}
+
+.your-type-first{
+    
+}
+.your-type-end{
+    
+}
+
+
+.type-name-stars {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 728px;
+    height: 201px;
+}
+
+.type-name {
+    width: 585px;
+    height: 169px;
+
+    font-size: 120px;
+    color: #FD83FD;
+    text-shadow: -1px -1px 0 #000, 
+    1px -1px 0 #000, 
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+
+    background-color: #ffffff;
+    border-radius: 100px;
+    border: 2px solid black;
+    box-shadow: inset 10px 10px 10px rgba(0, 0, 0, 0.25);
+}
+
+.stars{
+    width: 78px;
+    height: 81px;
+    position: absolute; 
+}
+
+.stars-first{
+    top: 0;
+    left: 0;
+}
+
+.stars-end{
+    bottom: 0;
+    right: 0;
+}
+
+.type-description{
+    width: 1537px;
+    background-color: rgba(255, 255, 255, 0.50);
+    border-radius: 72px;
+    /* padding:  136px 0px 0px 86px; */
+}
+
+.type-li-container {
+    text-align: left;
+    font-size: 40px;
+    font-family: 'AppleSDGothicNeoB';
+    
+}
+
+.type-li {
+    margin-bottom: 49px; 
+    font-weight: bold;
+}
+
+.finding-friend-graph {
+    /* margin-left: 116px; */
+}
+
+.friend-graph-name-container {
+    margin-top: 14px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.friend-graph-container{
+    margin-top: 112px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+
+    gap: 186px;
+
+    z-index: 100;   
+}
+
+.friend-name-container{
+    width: 1137px;
+    gap: 172px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+}
+
+.friend-name-container > p {
+    font-size: 40px;
+}
+
+.finding-friend{
+    display: flex;
+    flex-direction: row;
+    width: 601px;
+}
+
+.friend{
+    display: flex;
+    flex-direction: column;
+    flex-direction: column;
+    text-align: center;
+}
+
+.similar-friend{
+    text-align: left;
+
+}
+
+.similar-friend > p{
+    font-size: 40px;
+
+}
+
+.same-answers{
+    font-size: 24px;
+    margin-top: 13px; 
+
+}
+
+.graph{
+    width: 72px;
+    background: linear-gradient(#FF3FF7, #FF7EFA, #FFBBFC, #FFD6FD, #FFFFFF);
+}
+.graph-1{
+    height: 557px;
+}
+
+.graph-2{
+    height: 472px;
+}
+
+.graph-3{
+    height: 237px;
+}
+
+.graph-4{
+    height: 133px;
+}
+
+.friend-graph-bg{
+    width: 1137px;
+    height: 705px;
+    border-radius: 30px;
+    border: 4px solid black;
+    background-color: rgba(255, 255, 255, 0.25);
+    z-index: 0; 
+
+    position: absolute;
+}
+
+.graph-tip {
+}
+
+.retry-btn,
+.hotplace {
 }
