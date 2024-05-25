@@ -91,12 +91,12 @@ function Map() {
         }
     };
 
-    
+
     return (
         <div className="hot-place">
             <div className="full-display">
-                <div className="btns">
-                    <div className={activeButton === '학교'}></div>
+            <div className="btns">
+                    <div className={activeButton === '학교' ? 'active' : undefined}></div>
                     <button
                         className={activeButton === '카페' ? 'active' : ''}
                         onClick={() => handleButtonClick('카페')}
