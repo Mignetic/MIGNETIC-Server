@@ -164,7 +164,7 @@ function Question() {
     }
 
     const handleNextBtn = () => {
-        navigate('/')
+        navigate('/result')
     }
 
     return (
