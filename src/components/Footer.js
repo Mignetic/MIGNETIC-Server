@@ -4,10 +4,15 @@ import gihubIcon from '../images/icons/footer-github.png'
 import '../css/common/Footer.css'
 
 function Footer({ position }) {
-    const type = ['test', 'result'].includes(position) ? position : 'test'
+    const type = ['home', 'test', 'result'].includes(position) ? position : 'test'
+
+    let footerClassName = ''
+    if (type === 'home') footerClassName = 'homeContainer'
+    else if (type === 'test') footerClassName = 'testContainer'
+    else if (type === 'result') footerClassName = 'resultContainer'
 
     return (
-        <div className="Footer">
+        <div className={`Footer ${footerClassName}`}>
             {
                 type === 'test' && (
                     <div className='footerLogoContainer'>
@@ -15,8 +20,8 @@ function Footer({ position }) {
                     </div>
                 )
             }
-            <div className='footerTest'>
-                <div className={`footerTestFont ${type === 'test' ? 'testContainer' : 'resultContainer'}`}>
+            <div className={`footerTest ${footerClassName}`}>
+                <div className={`footerTestFont ${footerClassName}`}>
                     MIRIM MEISTER HIGH SHCOOL<br />
                     <br />
                     TEAM [ PEPPER ]<br />
@@ -24,7 +29,7 @@ function Footer({ position }) {
                     FRONT | 김수연 양지아 유희주<br />
                     BACK | 권지수 노승주 방윤서<br />
                 </div>
-                <div className='footerTestImg'>
+                <div className={`footerTestImg ${footerClassName}`}>
                     <img src={gihubIcon} />
                 </div>
             </div>
