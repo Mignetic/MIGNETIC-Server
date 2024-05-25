@@ -28,6 +28,11 @@
     font-size: 35px;
     color: black;
     height: 120px;
+    transition: background 0.5s;
+}
+
+.questionContainer .clicked {
+    background-color: #FFBFF1;
 }
 
 .two-answers button {

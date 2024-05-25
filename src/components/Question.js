@@ -1,7 +1,9 @@
 import ask from '../images/test-askbtn.png';
 import arrowBtn from '../images/icons/test-arrowBtn.png';
 import '../css/Question.css';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+
 
 const questions_student = [
     {
@@ -143,8 +145,8 @@ function questionList(array) {
 
 function Question() {
     const location = useLocation()
+    const navigate = useNavigate()
     const types = location.state?.types
-    console.log("types:", types)
 
     let questionssss = []
     if (types === 'student') questionssss = questions_student
@@ -153,10 +155,22 @@ function Question() {
 
     const shuffledQuestions = questionList([...questionssss])
 
+    const [selectedAnswers, setSelectedAnswers] = useState(Array(shuffledQuestions.length).fill(null))
+
+    const handleAnswerClick = (questionIndex, answerIndex) => {
+        const updatedAnswers = [...selectedAnswers]
+        updatedAnswers[questionIndex] = answerIndex
+        setSelectedAnswers(updatedAnswers)
+    }
+
+    const handleNextBtn = () => {
+        navigate('/')
+    }
+
     return (
         <div>
-            {shuffledQuestions.map((item, index) => (
-                <div className="Question" key={index}>
+            {shuffledQuestions.map((item, questionIndex) => (
+                <div className="Question" key={questionIndex}>
                     <div className='askContainer'>
                         <img src={ask} />
                         <p>{item.question}</p>
@@ -164,7 +178,12 @@ function Question() {
 
                     <div className={`questionContainer ${item.answers.length === 2 ? 'two-answers' : 'three-answers'}`}>
                         {item.answers.map((answer, answerIndex) => (
-                            <button key={answerIndex}>{answer}</button>
+                            <button
+                                key={answerIndex}
+                                className={selectedAnswers[questionIndex] === answerIndex ? 'clicked' : ''}
+                                onClick={() => handleAnswerClick(questionIndex, answerIndex)}>
+                                {answer}
+                            </button>
                         ))}
                     </div>
 
@@ -172,7 +191,7 @@ function Question() {
                 </div>
             ))}
             <div className='nextContainer'>
-                <button className='nextBtn'>다음<img src={arrowBtn} /></button>
+                <button className='nextBtn' onClick={handleNextBtn}>다음<img src={arrowBtn} /></button>
             </div>
         </div>
     )

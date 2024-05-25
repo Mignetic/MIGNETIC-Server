@@ -12,6 +12,7 @@
 
 .testboxContainer {
     position: relative;
+    animation: bounce 2s infinite;
 }
 
 .testboxContainer p {
@@ -36,4 +37,14 @@
 .arrowImg {
     margin-top: 58px;
     margin-bottom: 200px;
+}
+
+@keyframes bounce {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-40px);
+    }
 }
