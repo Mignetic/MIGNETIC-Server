@@ -1,31 +1,52 @@
-.footerLogoContainer {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 90px;
-
-}
-
 .footerTest {
     display: flex;
-    margin-bottom: 45px;
     margin-right: 25px;
     margin-left: 25px;
     gap: 1525px;
+}
+
+.footerTest.testContainer,
+.footerTest.resultContainer {
+    margin-bottom: 45px;
 }
 
 .footerTestFont {
     font-size: 20px;
 }
 
-.testContainer {
+
+.Footer.homeContainer {
+    background-color: white;
+    width: 100%;
+    height: 220px;
+    
+    display: flex;
+    align-items: center;
+}
+
+.footerTestImg.homeContainer {
+    display: flex;
+    align-items: flex-end;
+}
+
+
+.footerLogoContainer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 90px;
+}
+
+.footerTestFont.testContainer {
     color: white;
 }
 
-.resultContainer {
+
+.footerTestFont.resultContainer {
     color: black;
 }
 
-.footerTestImg {
+.footerTestImg.testContainer,
+.footerTestImg.resultContainer {
     display: flex;
     align-items: center;
 }
