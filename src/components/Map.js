@@ -35,13 +35,18 @@ function Map() {
     });
 
     const mapscript = () => {
-        const container = document.getElementById('map');
-        const options = {
-            center: new kakao.maps.LatLng(mapCenter.lat, mapCenter.lng),
-            level: mapZoom,
-        };
-        const newMap = new kakao.maps.Map(container, options);
-        setMap(newMap);
+        if (window.kakao) {
+            const container = document.getElementById('map');
+            const options = {
+                center: new kakao.maps.LatLng(mapCenter.lat, mapCenter.lng),
+                level: mapZoom,
+            };
+            const newMap = new kakao.maps.Map(container, options);
+            setMap(newMap);
+        } else {
+            // Kakao 지도 API가 아직 로드되지 않았을 때, 1초 뒤에 다시 시도
+            setTimeout(mapscript, 1000);
+        }
     };
 
     const updateMap = () => {

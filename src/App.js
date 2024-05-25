@@ -7,6 +7,7 @@ import Hotplace from './pages/Hotplace'
 import LetterWrite from './pages/LetterWrite'
 import Board from './pages/Board'
 import ShowLetter from './pages/ShowLetter'
+import Result from './pages/Result'
 
 
 import PositionInput from './components/PositionInput'
@@ -23,9 +24,7 @@ function App() {
           <Route path='/letterwrite' element={<LetterWrite />}></Route>
           <Route path='/board' element={<Board />}></Route>
           <Route path='/showletter' element={<ShowLetter/>}></Route>
-          
-
-
+          <Route path='/result' element={<Result />}></Route>
           <Route path='/positioninput' element={<PositionInput />}></Route>
         </Routes>
       </div>
