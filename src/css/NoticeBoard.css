@@ -1,4 +1,4 @@
-.noticeBoard-background {
+.noticeBoardBackground {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -11,13 +11,13 @@
     justify-content: flex-start;
 }
 
-.logo-container {
+.logoContainer {
     width: 100%;
     display: flex;
     justify-content: center;
     margin: 50px;
 }
-.logo-container img{
+.logoContainer img{
    width: 650px;
    height: auto;
     
@@ -26,7 +26,7 @@
 .boardLetter {
     position: relative;
     width: 80%;
-    height: 70%;
+    height: 1250px;
     top: 240px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
