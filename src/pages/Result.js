@@ -6,11 +6,16 @@ import tipimg from '../images/icons/result-graph-tip.png'
 import '../css/Result.css'
 import Footer from '../components/Footer'
 
-
+import React, { useEffect } from "react";
 import {useNavigate } from 'react-router-dom';
 
 
 function Result() {
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     document.body.style.backgroundImage = `url(${bgImg})`
     document.body.style.backgroundAttachment = 'scroll';
     document.body.style.backgroundSize = 'cover';
