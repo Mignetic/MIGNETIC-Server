@@ -9,19 +9,28 @@ import Footer from '../components/Footer'
 
 function Result() {
     document.body.style.backgroundImage = `url(${bgImg})`
+    document.body.style.backgroundAttachment = 'scroll';
+    document.body.style.backgroundSize = 'cover';
+    document.body.style.backgroundRepeat = 'no-repeat';
 
     return (
         <div className='result'>
             <img src={logoimg} className="logoimg" />
             <div className='result-container'>
                 <div className='type-container'>
-                    <p className='your-type your-type-first'>당신의 타입은...</p>
+                    <div className='your-type your-type-first'>
+                        <p>당신의 타입은...</p>
+
+                    </div>
                     <div className='type-name-stars'>
                         <img src={stars} className="stars stars-first" />
                         <p className='type-name'>Setter</p>
                         <img src={stars} className="stars stars-end" />
                     </div>
-                    <p className='your-type your-type-end'>입니다</p>
+                    <div className='your-type your-type-end'>
+                        <p>입니다</p>
+
+                    </div>
                 </div>
                 <div className='type-description'>
                     <div className='type-li-container'>
@@ -43,7 +52,9 @@ function Result() {
                             <div className='similar-friend'>
                                 <p>나와 비슷한 친구</p>
                             </div>
-                            <p className='same-answers'>10개 중 같은 답을 선택한 개수</p>
+                            <div className='same-answers'>
+                                <p>10개 중 같은 답을 선택한 개수</p>
+                            </div>
                         </div>
                         <div className='friend-graph-name-container'>
                             <div className='friend-graph-container'>
@@ -79,6 +90,7 @@ function Result() {
                             편지를 쓸 수 있어요!
                         </p>
                     </div>
+                    <div className='type-description-bg'></div>
                 </div>
                 <div className='btn-container'>
                     <button className='retry-btn'>검사 다시하기</button>
@@ -86,7 +98,10 @@ function Result() {
 
                 </div>
             </div>
-            <Footer />
+            <div className='footer'>
+                <Footer />
+
+            </div>
         </div>
     )
 }
