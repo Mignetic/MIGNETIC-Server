@@ -7,7 +7,7 @@ import '../css/Result.css'
 import Footer from '../components/Footer'
 
 import React, { useEffect } from "react";
-import {useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 function Result() {
@@ -20,7 +20,7 @@ function Result() {
     document.body.style.backgroundAttachment = 'scroll';
     document.body.style.backgroundSize = 'cover';
     document.body.style.backgroundRepeat = 'no-repeat';
-    
+
     const navigate = useNavigate()
 
     const handleTest = () => {
@@ -41,7 +41,9 @@ function Result() {
                     </div>
                     <div className='type-name-stars'>
                         <img src={stars} className="stars stars-first" />
-                        <p className='type-name'>Setter</p>
+                        <div className='type-name'>
+                            <p>Setter</p>
+                        </div>
                         <img src={stars} className="stars stars-end" />
                     </div>
                     <div className='your-type your-type-end'>
