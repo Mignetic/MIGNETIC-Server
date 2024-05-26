@@ -8,9 +8,9 @@ import Footer from '../components/Footer'
 
 function Home() {
     return (
-        <div>
+        <div className="HomeContainer">
             <Main />
-            <Secondary/>
+            <Secondary />
             <Last />
             <Footer position='home' />
         </div>
