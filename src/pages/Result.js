@@ -7,11 +7,23 @@ import '../css/Result.css'
 import Footer from '../components/Footer'
 
 
+import {useNavigate } from 'react-router-dom';
+
+
 function Result() {
     document.body.style.backgroundImage = `url(${bgImg})`
     document.body.style.backgroundAttachment = 'scroll';
     document.body.style.backgroundSize = 'cover';
     document.body.style.backgroundRepeat = 'no-repeat';
+    
+    const navigate = useNavigate()
+
+    const handleTest = () => {
+        navigate('/testselect')
+    }
+    const handleHotPlace = () => {
+        navigate('/hotplace')
+    }
 
     return (
         <div className='result'>
@@ -93,8 +105,8 @@ function Result() {
                     <div className='type-description-bg'></div>
                 </div>
                 <div className='btn-container'>
-                    <button className='retry-btn'>검사 다시하기</button>
-                    <button className='hotplace-btn'>친구와 핫플 보기</button>
+                    <button className='retry-btn' onClick={handleTest}>검사 다시하기</button>
+                    <button className='hotplace-btn' onClick={handleHotPlace}>친구와 핫플 보기</button>
 
                 </div>
             </div>
