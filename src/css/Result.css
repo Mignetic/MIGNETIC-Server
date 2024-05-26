@@ -5,7 +5,7 @@
     align-items: center;
     margin: 0;
     padding: 0;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .logoimg {
@@ -17,24 +17,47 @@
 .result-container {
     text-align: center;
     margin-bottom: 544px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .type-container {
+    width: 728px;
+    height: 347px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
+    position: relative;
+    margin-top: 178px;
+    margin-bottom: 64px;
 }
 
-.your-type {
+.your-type{
     font-size: 64px;
     color: white;
 }
+.your-type > p{
+    margin: 0;
+    padding: 0;
+}
 
-.your-type-first {}
+.your-type-first {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-left: 37px;
+}
 
-.your-type-end {}
+.your-type-end {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-right: 63px;
+}
 
 
 .type-name-stars {
@@ -81,28 +104,46 @@
 
 .type-description {
     width: 1537px;
-    background-color: rgba(255, 255, 255, 0.50);
-    border-radius: 72px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    backdrop-filter: blur(20px);
+    position: relative;
+    padding: 148px 0;
+}
+
+.type-description-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    width: 1537px;
+    background-color: rgba(255, 255, 255, 0.50);
+    border-radius: 72px;
+    filter: blur(10px);
+    z-index: -1;
 }
 
 .type-li-container {
     text-align: left;
     font-size: 40px;
     font-family: 'AppleSDGothicNeoB';
-
+    align-self: flex-start;
+    margin-left: 94px;
 }
 
 .type-li {
     margin-bottom: 49px;
     font-weight: bold;
+    gap: 49px;
 }
 
 .finding-friend-graph {
-    /* margin-left: 116px; */
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 .friend-graph-name-container {
@@ -146,7 +187,12 @@
 .finding-friend {
     display: flex;
     flex-direction: row;
-    width: 601px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+
+    margin-left: 218px;
+    margin-top: 145px;
 }
 
 .friend-graph {
@@ -188,12 +234,19 @@
 
 .similar-friend>p {
     font-size: 40px;
+    margin: 0;
+    padding: 0;
 
 }
 
 .same-answers {
+    margin-top: auto;
+}
+
+.same-answers>p {
     font-size: 24px;
-    margin-top: 13px;
+    margin: 0;
+    padding: 0;
 
 }
 
@@ -232,7 +285,7 @@
 }
 
 .graph-tip {
-    margin: 94px 0px 106px 0px;
+    margin: 94px 0px 0px 0px;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -246,7 +299,7 @@
     border-radius: 30px;
 }
 
-.tip-img{
+.tip-img {
     position: absolute;
     width: 31px;
     height: 31px;
@@ -256,8 +309,8 @@
     top: 0;
 }
 
-.tip-text{
-    position: absolute; 
+.tip-text {
+    position: absolute;
     font-size: 32px;
 }
 
@@ -283,5 +336,6 @@
 
     font-family: 'AppleSDGothicNeoB';
     font-weight: bold;
+    margin-top: 106px;
 
 }
