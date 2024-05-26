@@ -1,16 +1,18 @@
 import '../css/common/Index.css'
 import '../css/Home.css'
 
-import Header from '../components/Header'
 import Main from '../components/homes/Main'
+import Secondary from '../components/homes/Secondary'
+import Last from '../components/homes/Last'
 import Footer from '../components/Footer'
 
 function Home() {
     return (
-        <div>
-            <Header position={'home'} />
+        <div className="HomeContainer">
             <Main />
-            <Footer position='home'/>
+            <Secondary />
+            <Last />
+            <Footer position='home' />
         </div>
     )
 }
