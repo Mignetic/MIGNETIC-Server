@@ -29,7 +29,7 @@ function Footer({ position }) {
                     FRONT | 김수연 양지아 유희주<br />
                     BACK | 권지수 노승주 방윤서<br />
                 </div>
-                <div className={`footerTestImg ${footerClassName}`}>
+                <div className='footerTestImg'>
                     <img src={gihubIcon} />
                 </div>
             </div>
