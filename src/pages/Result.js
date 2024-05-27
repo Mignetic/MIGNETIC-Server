@@ -127,7 +127,7 @@ function Result() {
                 </div>
             </div>
             <div className='footer'>
-                <Footer />
+                <Footer position={"result"} />
 
             </div>
         </div>
