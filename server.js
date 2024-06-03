@@ -22,7 +22,7 @@ db.connect((err) => {
     console.log('MySQL에 연결');
 });
 
-app.get('/api/users', (req, res) => {
+app.get('/api/[테이블 이름]', (req, res) => {
     const sql = 'SELECT * FROM [테이블 이름]';
     db.query(sql, (err, results) => {
         if (err) {
