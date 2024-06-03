@@ -11,14 +11,23 @@ import Result from './pages/Result'
 
 
 import PositionInput from './components/PositionInput'
-import { useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function App() {
-  useEffect(() => {
-    fetch("http://localhost:8888/api")
-    .then(res => res.json())
-    .then(data => console.log(data));
-  });
+  //db 연동 테스트 
+  //const [users, setUsers] = useState([]);
+
+    useEffect(() => {
+        axios.get('http://localhost:8888/api/users')
+            .then(response => {
+                //db 연동 테스트 
+                // setUsers(response.data);
+            })
+            .catch(error => {
+                console.error('에러 :', error);
+            });
+    }, []);
 
   return (
     // <BrowserRouter>
@@ -36,9 +45,15 @@ function App() {
     //     </Routes>
     //   </div>
     // </BrowserRouter>
-    <div className='App'>
-      Test
-    </div>
+    <div className="App">
+            <h1>Users</h1>
+            <ul>
+                {/* db 연동 테스트
+                  {users.map(user => (
+                    <li key={user.id}>{user.name} - {user.email}</li>
+                ))} */}
+            </ul>
+        </div>
   );
 }
 export default App;
