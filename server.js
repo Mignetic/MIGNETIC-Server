@@ -1,3 +1,4 @@
+// npm install dotenv
 require('dotenv').config();
 const mysql = require('mysql');
 
