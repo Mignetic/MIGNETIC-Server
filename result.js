@@ -3,7 +3,7 @@ const connection = require('./db2'); // MySQL 연결 설정 파일
 const router = express.Router();
 
 // ID가 3인 값 불러오기
-router.get('/student/3', (req, res) => {
+router.get('/', (req, res) => {
     const sql = 'SELECT * FROM student_data WHERE id = 3';
     connection.query(sql, (err, results) => {
         if (err) {
