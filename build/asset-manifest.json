@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.ab18391b.css",
-    "main.js": "/static/js/main.350a3938.js",
+    "main.css": "/static/css/main.d308af69.css",
+    "main.js": "/static/js/main.20665722.js",
     "static/media/AppleSDGothicNeoR.ttf": "/static/media/AppleSDGothicNeoR.d159b4d4ce2ef2592daa.ttf",
     "static/media/AppleSDGothicNeoSB.ttf": "/static/media/AppleSDGothicNeoSB.24f6918836e50d1e5621.ttf",
     "static/media/testPosition-bg.png": "/static/media/testPosition-bg.15f4835c43db0b6d87d4.png",
     "static/media/hotplace-bg.png": "/static/media/hotplace-bg.8513280885e2eb4e7d04.png",
     "static/media/result-bg.png": "/static/media/result-bg.da0736876bf7b330b1b9.png",
-    "static/media/home-bg.png": "/static/media/home-bg.853b03370af228725b7f.png",
     "static/media/noticeBoard-bg2.png": "/static/media/noticeBoard-bg2.8a7c9e7ed0bb27e45a57.png",
     "static/media/test-bg.png": "/static/media/test-bg.301dff68f387419fea79.png",
     "static/media/home-logo.png": "/static/media/home-logo.5e670e91bc378f8e0456.png",
+    "static/media/home-bg.png": "/static/media/home-bg.f39ea8fe5792fd6b17ad.png",
     "static/media/last-bg.png": "/static/media/last-bg.3926655fc9c8d3d335b6.png",
     "static/media/letter-bg.png": "/static/media/letter-bg.fdf51ab1bf19945e9d7a.png",
     "static/media/secondary-bg.png": "/static/media/secondary-bg.1d80ef9caf545deae811.png",
@@ -35,11 +35,11 @@
     "static/media/last-heart.png": "/static/media/last-heart.8429c4a2da900cd391f5.png",
     "static/media/secondary-icon2.png": "/static/media/secondary-icon2.45647df01e5c985954c3.png",
     "index.html": "/index.html",
-    "main.ab18391b.css.map": "/static/css/main.ab18391b.css.map",
-    "main.350a3938.js.map": "/static/js/main.350a3938.js.map"
+    "main.d308af69.css.map": "/static/css/main.d308af69.css.map",
+    "main.20665722.js.map": "/static/js/main.20665722.js.map"
   },
   "entrypoints": [
-    "static/css/main.ab18391b.css",
-    "static/js/main.350a3938.js"
+    "static/css/main.d308af69.css",
+    "static/js/main.20665722.js"
   ]
 }
