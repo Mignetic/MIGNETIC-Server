@@ -1,17 +1,9 @@
 const express = require('express');
-const bodyParser = require('body-parser');
-const connection = require('./db'); // 위에서 작성한 MySQL 연결 설정 파일
-const cors = require('cors');
-const axios = require('axios');
-const path = require('path');
-
-const app = express();
-const port = 3000;
-
-app.use(bodyParser.json());
+const connection = require('./db2'); // MySQL 연결 설정 파일
+const router = express.Router();
 
 // POST 요청 처리 예시
-app.post('/api/saveAnswers', (req, res) => {
+router.post('/saveAnswers', (req, res) => {
     const { types, studentName, studentSubject, outsiderType, selectedAnswers } = req.body;
 
     // MySQL 쿼리 작성
@@ -33,14 +25,4 @@ app.post('/api/saveAnswers', (req, res) => {
     });
 });
 
-app.use(express.static(path.join(__dirname, 'build')));
-
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
-
-
-// 서버 시작
-app.listen(port, () => {
-    console.log(`서버가 http://localhost:${port} 포트에서 실행 중입니다.`);
-});
+module.exports = router;

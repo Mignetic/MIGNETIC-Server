@@ -1,35 +1,27 @@
-// npm install dotenv
+const express = require('express');
+const path = require('path');
+const cors = require('cors');
 require('dotenv').config();
-const mysql = require('mysql');
 
-const connection = mysql.createConnection({
-    host: process.env.DB_HOST || 'localhost',
-    user: process.env.DB_USER || 'root',
-    password: process.env.DB_PASSWORD || '111111',
-    database: process.env.DB_DATABASE || 'mignetic',
-    port: process.env.DB_PORT || 3307
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+// 미들웨어 등록
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// 리액트 앱에서 정적파일 사용
+app.use(express.static(path.join(__dirname, 'build')));
+
+// API 라우트
+app.use('/api/result', require('./result'));
+app.use('/api', require('./info'));
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-connection.connect((err) => {
-    if (err) {
-        console.error('Error connecting to the database:', err.stack);
-        return;
-    }
-    console.log('Connected to the database as id', connection.threadId);
-});
-
-connection.query('SELECT 1 + 1 AS solution', (err, results, fields) => {
-    if (err) {
-        console.error('Error executing query:', err.stack);
-        connection.end();
-        return;
-    }
-    console.log('The solution is: ', results[0].solution);
-    connection.end((err) => {
-        if (err) {
-            console.error('Error ending the connection:', err.stack);
-        } else {
-            console.log('Connection closed');
-        }
-    });
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });
