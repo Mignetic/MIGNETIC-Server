@@ -4,8 +4,9 @@ const mysql = require('mysql2');
 const connection = mysql.createConnection({
     host: 'localhost', // MySQL 호스트 주소
     user: 'root',      // MySQL 사용자 이름
-    password: '1234',  // MySQL 비밀번호
-    database: 'mignetic' // 사용할 데이터베이스 이름
+    password: '111111',  // MySQL 비밀번호
+    database: 'mignetic', // 사용할 데이터베이스 이름
+    port : 3307
 });
 
 // 연결 테스트
