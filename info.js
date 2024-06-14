@@ -29,11 +29,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.post('/api/saveAnswers', (req, res) => {
     const postData = req.body;
 
-    // 데이터 삽입 쿼리
     let sqlQuery;
     let values;
 
     if (postData.types === 'student') {
+        
         sqlQuery = 'INSERT INTO student_data (name, stuID, answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8, answer9, answer10, type, best, best_name, best_stuID, worst) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
         values = [
             postData.name,
@@ -48,7 +48,7 @@ app.post('/api/saveAnswers', (req, res) => {
             postData.selectedAnswers[7],
             postData.selectedAnswers[8],
             postData.selectedAnswers[9],
-            postData.type,
+            postData.types,
             postData.best,
             postData.best_name,
             postData.best_stuID,
@@ -69,7 +69,7 @@ app.post('/api/saveAnswers', (req, res) => {
             postData.selectedAnswers[7],
             postData.selectedAnswers[8],
             postData.selectedAnswers[9],
-            postData.type,
+            postData.types,
             postData.best,
             postData.best_name,
             postData.best_subject,
@@ -90,7 +90,7 @@ app.post('/api/saveAnswers', (req, res) => {
             postData.selectedAnswers[7],
             postData.selectedAnswers[8],
             postData.selectedAnswers[9],
-            postData.type,
+            postData.types,
             postData.best,
             postData.best_name,
             postData.best_relation,
@@ -104,13 +104,11 @@ app.post('/api/saveAnswers', (req, res) => {
     // 데이터 삽입 쿼리 실행
     db.query(sqlQuery, values, (err, result) => {
         if (err) {
-            // Handle MySQL errors
             console.error('데이터 삽입 오류:', err);
             res.status(500).send('데이터 삽입 오류가 발생했습니다.');
         } else {
-            // Handle successful insertion
             console.log('데이터가 성공적으로 삽입되었습니다.');
-            res.status(200).send('데이터가 성공적으로 삽입되었습니다.');
+            res.status(200).json({ message: '데이터가 성공적으로 삽입되었습니다.', id: result.insertId });
         }
     });
 });
