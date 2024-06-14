@@ -1,5 +1,7 @@
 {
   "files": {
+    "main.css": "/static/css/main.d308af69.css",
+    "main.js": "/static/js/main.cfb6d733.js",
     "main.css": "/static/css/main.a6b4d7fb.css",
     "main.js": "/static/js/main.1c3c23e3.js",
     "static/media/AppleSDGothicNeoR.ttf": "/static/media/AppleSDGothicNeoR.d159b4d4ce2ef2592daa.ttf",
@@ -35,6 +37,12 @@
     "static/media/last-heart.png": "/static/media/last-heart.8429c4a2da900cd391f5.png",
     "static/media/secondary-icon2.png": "/static/media/secondary-icon2.45647df01e5c985954c3.png",
     "index.html": "/index.html",
+    "main.d308af69.css.map": "/static/css/main.d308af69.css.map",
+    "main.cfb6d733.js.map": "/static/js/main.cfb6d733.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d308af69.css",
+    "static/js/main.cfb6d733.js"
     "main.a6b4d7fb.css.map": "/static/css/main.a6b4d7fb.css.map",
     "main.1c3c23e3.js.map": "/static/js/main.1c3c23e3.js.map"
   },
