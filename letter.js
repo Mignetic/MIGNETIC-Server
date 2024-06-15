@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const router = express.Router();
-const connection = require('./db');
+const connection = require('./db2');
 
 // CORS 설정
 router.use(cors());
