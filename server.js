@@ -4,7 +4,7 @@ const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 // 미들웨어 등록
 app.use(cors());
@@ -17,6 +17,7 @@ app.use(express.static(path.join(__dirname, 'build')));
 // API 라우트
 app.use('/api/result', require('./result'));
 app.use('/api', require('./info'));
+app.use('/api', require('./letter'));
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
