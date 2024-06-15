@@ -4,19 +4,20 @@ const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 // 미들웨어 등록
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// 리액트 앱에서 정적파일 사용
+// 리액트 앱에서 정적 파일 사용
 app.use(express.static(path.join(__dirname, 'build')));
 
 // API 라우트
 app.use('/api/result', require('./result'));
-app.use('/api', require('./info'));
+app.use('/api/info', require('./info')); // 수정된 부분
+app.use('/api/letter', require('./letter')); // 수정된 부분
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));

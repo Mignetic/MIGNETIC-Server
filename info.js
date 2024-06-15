@@ -2,15 +2,16 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mysql = require('mysql');
 const path = require('path');
-const app = express();
-const port = 3000;
+const router = express.Router(); // 변경된 부분
+// const connection = require('./db'); // MySQL 연결 설정 파일
 
 // MySQL 데이터베이스 연결 설정
 const db = mysql.createConnection({
     host: 'localhost',
     user: 'root', // MySQL 사용자 이름
-    password: '1234', // MySQL 비밀번호
-    database: 'mignetic' // 사용할 데이터베이스 이름
+    password: '111111', // MySQL 비밀번호
+    database: 'mignetic', // 사용할 데이터베이스 이름
+    port: 3307
 });
 
 // MySQL 연결
@@ -22,18 +23,17 @@ db.connect((err) => {
 });
 
 // Body parser 설정
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+router.use(bodyParser.json());
+router.use(bodyParser.urlencoded({ extended: true }));
 
 // POST 요청 처리
-app.post('/api/saveAnswers', (req, res) => {
+router.post('/saveAnswers', (req, res) => {
     const postData = req.body;
 
     let sqlQuery;
     let values;
 
     if (postData.types === 'student') {
-        
         sqlQuery = 'INSERT INTO student_data (name, stuID, answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8, answer9, answer10, type, best, best_name, best_stuID, worst) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
         values = [
             postData.name,
@@ -113,14 +113,11 @@ app.post('/api/saveAnswers', (req, res) => {
     });
 });
 
-app.use(express.static(path.join(__dirname, 'build')));
+// 정적 파일 제공
+router.use(express.static(path.join(__dirname, 'build')));
 
-app.get('*', (req, res) => {
+router.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-
-// 서버 시작
-app.listen(port, () => {
-    console.log(`서버가 http://localhost:${port} 포트에서 실행 중입니다.`);
-});
+module.exports = router;

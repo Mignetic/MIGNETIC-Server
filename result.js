@@ -1,5 +1,5 @@
 const express = require('express');
-const connection = require('./db2'); // MySQL 연결 설정 파일
+const connection = require('./db'); // MySQL 연결 설정 파일
 const router = express.Router();
 
 // 유사도를 계산하는 함수
@@ -15,13 +15,13 @@ function calculateSimilarity(studentAnswers, typeAnswers) {
 
 // ID가 3인 값 불러오기 및 유사도 계산
 router.get('/', (req, res) => {
-    const id = 7 //이후에 세션 또는 쿠키에 저장된 값 불러오기
-    const division = 0 // 학생 : 0, 선생님 : 1, 외부인 : 2
+    const id = 7; // 이후에 세션 또는 쿠키에 저장된 값 불러오기
+    const division = 0; // 학생 : 0, 선생님 : 1, 외부인 : 2
     const divisionArr = ['student_data', 'teacher_data', 'official_data'];
     let bestType = null;
     let worstType = null;
 
-    const studentSql = `SELECT * FROM student_data WHERE id = ${id}`;   // 사용자의 student_data값을 불러옴
+    const studentSql = `SELECT * FROM student_data WHERE id = ${id}`; // 사용자의 student_data값을 불러옴
     connection.query(studentSql, (err, studentResults) => {
         if (err) {
             console.error('쿼리 실행 오류:', err);
@@ -44,7 +44,7 @@ router.get('/', (req, res) => {
                     let bestMatch = null;
                     let highestSimilarity = -1;
 
-                    // type테이블에서 각 타입을 한 번씩 가져옴
+                    // type 테이블에서 각 타입을 한 번씩 가져옴
                     typeResults.forEach(typeRow => {
                         const typeAnswers = [
                             typeRow.answer1, typeRow.answer2, typeRow.answer3, typeRow.answer4,
@@ -59,8 +59,8 @@ router.get('/', (req, res) => {
                         if (similarity > highestSimilarity) {
                             highestSimilarity = similarity;
                             bestMatch = typeRow.type; // type 속성 값 저장
-                            bestType = typeRow.best;    // 가장 잘 맞는 사람 저장
-                            worstType = typeRow.worst;  // 가장 안 맞는 사람 저장
+                            bestType = typeRow.best; // 가장 잘 맞는 사람 저장
+                            worstType = typeRow.worst; // 가장 안 맞는 사람 저장
                         }
                     });
 
