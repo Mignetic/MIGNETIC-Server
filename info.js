@@ -36,7 +36,7 @@ router.post('/saveAnswers', (req, res) => {
     let values;
 
     if (postData.types === 'student') {
-        sqlQuery = 'INSERT INTO student_data (name, stuID, answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8, answer9, answer10, type, best, best_name, best_stuID, worst) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+        sqlQuery = 'INSERT INTO student_data (name, stuID, answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8, answer9, answer10, type, best, worst) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
         values = [
             postData.name,
             postData.stuID,
@@ -52,12 +52,10 @@ router.post('/saveAnswers', (req, res) => {
             postData.selectedAnswers[9],
             postData.types,
             postData.best,
-            postData.best_name,
-            postData.best_stuID,
             postData.worst
         ];
     } else if (postData.types === 'teacher') {
-        sqlQuery = 'INSERT INTO teacher_data (name, subject, answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8, answer9, answer10, type, best, best_name, best_subject, worst) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+        sqlQuery = 'INSERT INTO teacher_data (name, subject, answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8, answer9, answer10, type, best, worst) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
         values = [
             postData.name,
             postData.subject,
@@ -73,12 +71,10 @@ router.post('/saveAnswers', (req, res) => {
             postData.selectedAnswers[9],
             postData.types,
             postData.best,
-            postData.best_name,
-            postData.best_subject,
             postData.worst
         ];
     } else if (postData.types === 'official') {
-        sqlQuery = 'INSERT INTO official_data (name, relation, answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8, answer9, answer10, type, best, best_name, best_relation, worst) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+        sqlQuery = 'INSERT INTO official_data (name, relation, answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8, answer9, answer10, type, best, worst) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
         values = [
             postData.name,
             postData.relation,
@@ -94,8 +90,6 @@ router.post('/saveAnswers', (req, res) => {
             postData.selectedAnswers[9],
             postData.types,
             postData.best,
-            postData.best_name,
-            postData.best_relation,
             postData.worst
         ];
     } else {
