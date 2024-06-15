@@ -5,7 +5,7 @@ const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
-const PORT = process.env.PORT || 3307;
+const PORT = 3000;
 
 // 미들웨어 등록
 app.use(cors());

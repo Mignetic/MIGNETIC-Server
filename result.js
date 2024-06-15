@@ -1,5 +1,5 @@
 const express = require('express');
-const connection = require('./db2'); // MySQL 연결 설정 파일
+const connection = require('./db'); // MySQL 연결 설정 파일
 const router = express.Router();
 
 // 유사도를 계산하는 함수
@@ -76,7 +76,7 @@ router.get('/', (req, res) => {
                             console.error('쿼리 실행 오류:', err);
                             res.status(500).json({ error: '데이터베이스 업데이트 오류 발생' });
                         } else {
-                            res.status(200).json({ success: true });
+                            // res.status(200).json({ success: true });
                         }
                     });
                 }
