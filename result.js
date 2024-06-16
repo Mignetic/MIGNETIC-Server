@@ -18,18 +18,16 @@ function calculateSimilarity(studentAnswers, typeAnswers) {
 router.post('/', (req, res) => {
     // 클라이언트에서 전송한 데이터
     const { id, type } = req.body;  // front에서 session에 저장된 id와 type을 불러옴
-    let division = 0; // 학생 : 0, 선생님 : 1, 외부인 : 2
+    let division = -1; // 학생 : 0, 선생님 : 1, 외부인 : 2
     const divisionArr = ['student_data', 'teacher_data', 'official_data'];
     let bestType = null;
     let worstType = null;
-
-    console.log(id, ",,,,,,", type)
 
     if(type === 'student') division = 0
     else if(type === 'teacher') division = 1
     else if(type === 'official') division = 2
 
-    const studentSql = `SELECT * FROM student_data WHERE id = ${id}`; // 사용자의 student_data값을 불러옴
+    const studentSql = `SELECT * FROM ${divisionArr[division]} WHERE id = ${id}`; // 사용자의 student_data값을 불러옴
     connection.query(studentSql, (err, studentResults) => {
         if (err) {
             console.error('쿼리 실행 오류:', err);
