@@ -10,16 +10,16 @@ const router = express.Router(); // 변경된 부분
 const db = mysql.createConnection({
     host: 'localhost',
     user: 'root', // MySQL 사용자 이름
-    password: '0000', // MySQL 비밀번호
+    password: '1234', // MySQL 비밀번호
     database: 'mignetic', // 사용할 데이터베이스 이름
     port: 3306
 });
 
 // MySQL 연결
 db.connect((err) => {
-    if (err) {
-        throw err;
-    }
+    // if (err) {
+    //     throw err;
+    // }
     console.log('MySQL database connected');
 });
 
