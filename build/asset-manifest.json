@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.c00e5acc.css",
-    "main.js": "/static/js/main.b58a0f3f.js",
+    "main.css": "/static/css/main.411c893e.css",
+    "main.js": "/static/js/main.e393eb46.js",
     "static/media/AppleSDGothicNeoR.ttf": "/static/media/AppleSDGothicNeoR.d159b4d4ce2ef2592daa.ttf",
     "static/media/AppleSDGothicNeoSB.ttf": "/static/media/AppleSDGothicNeoSB.24f6918836e50d1e5621.ttf",
     "static/media/testPosition-bg.png": "/static/media/testPosition-bg.15f4835c43db0b6d87d4.png",
@@ -36,11 +36,11 @@
     "static/media/secondary-icon2.png": "/static/media/secondary-icon2.45647df01e5c985954c3.png",
     "index.html": "/index.html",
     "static/media/heart.svg": "/static/media/heart.a321bdfb81b4d8db893e64b38104bce3.svg",
-    "main.c00e5acc.css.map": "/static/css/main.c00e5acc.css.map",
-    "main.b58a0f3f.js.map": "/static/js/main.b58a0f3f.js.map"
+    "main.411c893e.css.map": "/static/css/main.411c893e.css.map",
+    "main.e393eb46.js.map": "/static/js/main.e393eb46.js.map"
   },
   "entrypoints": [
-    "static/css/main.c00e5acc.css",
-    "static/js/main.b58a0f3f.js"
+    "static/css/main.411c893e.css",
+    "static/js/main.e393eb46.js"
   ]
 }

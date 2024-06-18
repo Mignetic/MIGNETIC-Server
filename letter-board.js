@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const connection = require('./db'); // MySQL 연결 설정이 필요합니다.
+const connection = require('./db2'); // MySQL 연결 설정이 필요합니다.
 
 router.get('/latest', (req, res) => {
     const selectLatestLetterQuery = 'SELECT toName, fromName, content FROM letter ORDER BY id DESC LIMIT 1';
