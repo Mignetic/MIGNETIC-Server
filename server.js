@@ -20,6 +20,7 @@ app.use(express.static(path.join(__dirname, 'build')));
 app.use('/api/result', require('./result'));
 app.use('/api/info', require('./info')); // info.js 라우터 등록
 app.use('/api/letter', require('./letter'));
+app.use('/api/letter-board', require('./letter-board'));
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
