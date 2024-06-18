@@ -3,7 +3,7 @@
 const express = require('express');
 const cors = require('cors');
 const router = express.Router();
-const connection = require('./db');
+const connection = require('./db2');
 
 router.use(cors());
 

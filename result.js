@@ -1,5 +1,6 @@
 const express = require('express');
-const connection = require('./db'); // MySQL 연결 설정 파일
+const session = require('express-session');
+const connection = require('./db2'); // MySQL 연결 설정 파일
 const router = express.Router();
 
 // 유사도를 계산하는 함수
@@ -13,15 +14,20 @@ function calculateSimilarity(studentAnswers, typeAnswers) {
     return similarity;
 }
 
-// ID가 3인 값 불러오기 및 유사도 계산
-router.get('/', (req, res) => {
-    const id = 7; // 이후에 세션 또는 쿠키에 저장된 값 불러오기
-    const division = 0; // 학생 : 0, 선생님 : 1, 외부인 : 2
+// POST 요청 처리
+router.post('/', (req, res) => {
+    // 클라이언트에서 전송한 데이터
+    const { id, type } = req.body;  // front에서 session에 저장된 id와 type을 불러옴
+    let division = -1; // 학생 : 0, 선생님 : 1, 외부인 : 2
     const divisionArr = ['student_data', 'teacher_data', 'official_data'];
     let bestType = null;
     let worstType = null;
 
-    const studentSql = `SELECT * FROM student_data WHERE id = ${id}`; // 사용자의 student_data값을 불러옴
+    if(type === 'student') division = 0
+    else if(type === 'teacher') division = 1
+    else if(type === 'official') division = 2
+
+    const studentSql = `SELECT * FROM ${divisionArr[division]} WHERE id = ${id}`; // 사용자의 student_data값을 불러옴
     connection.query(studentSql, (err, studentResults) => {
         if (err) {
             console.error('쿼리 실행 오류:', err);
@@ -63,10 +69,11 @@ router.get('/', (req, res) => {
                             worstType = typeRow.worst; // 가장 안 맞는 사람 저장
                         }
                     });
-
                     res.status(200).json({
                         studentData: studentData,
                         bestMatch: bestMatch, // 가장 유사한 type 값 반환
+                        bestType : bestType,
+                        worstType : worstType
                     });
 
                     // ID가 있는 행의 값을 업데이트

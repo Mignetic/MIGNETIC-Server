@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const cors = require('cors');
 require('dotenv').config();
+const session = require('express-session');
 
 const app = express();
 const PORT = 3000;
