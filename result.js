@@ -22,6 +22,7 @@ router.post('/', (req, res) => {
     const divisionArr = ['student_data', 'teacher_data', 'official_data'];
     let bestType = null;
     let worstType = null;
+    let topFourFriends = null;
 
     if(type === 'student') division = 0
     else if(type === 'teacher') division = 1
@@ -69,12 +70,6 @@ router.post('/', (req, res) => {
                             worstType = typeRow.worst; // 가장 안 맞는 사람 저장
                         }
                     });
-                    res.status(200).json({
-                        studentData: studentData,
-                        bestMatch: bestMatch, // 가장 유사한 type 값 반환
-                        bestType : bestType,
-                        worstType : worstType
-                    });
 
                     // ID가 있는 행의 값을 업데이트
                     const updateSql = `UPDATE ${divisionArr[division]} SET type = ?, best = ?, worst = ? WHERE id = ?`;
@@ -82,9 +77,63 @@ router.post('/', (req, res) => {
                         if (err) {
                             console.error('쿼리 실행 오류:', err);
                             res.status(500).json({ error: '데이터베이스 업데이트 오류 발생' });
-                        } else {
-                            // res.status(200).json({ success: true });
                         }
+                    });
+                    
+                    const fourFriendSql = `SELECT * FROM ${divisionArr[division]} WHERE type = '${bestType}'`;
+                    connection.query(fourFriendSql, (err, fourFriendResult) => {
+                        if(err) {
+                            console.error('쿼리 실행 오류:', err);
+                            res.status(500).json({ error: '데이터베이스 업데이트 오류 발생' });    
+                        }
+                        let similarity = -1;
+                        let friendsSimilarity = fourFriendResult.map(friend => {
+                            const friendAnswer = [
+                                friend.answer1, friend.answer2, friend.answer3, friend.answer4, friend.answer5,
+                                friend.answer6, friend.answer7, friend.answer8, friend.answer9, friend.answer10
+                            ];
+                            similarity = calculateSimilarity(studentAnswers, friendAnswer);
+                            return {...friend, similarity};
+                        });
+                        friendsSimilarity.sort((a,b) => b.similarity - a.similarity);
+                        topFourFriends = friendsSimilarity.slice(0,4).map(friend => ({
+                            id : friend.id,
+                            name : friend.name,
+                            similarity : friend.similarity
+                        }));
+                    });
+                    const explainSql = `SELECT intro, hashtag, strength, weakness FROM type WHERE division = ${division} and type = '${bestMatch}'`;
+                    const bestExplainSql = `SELECT intro, hashtag FROM type WHERE division = ${division} and type = '${bestType}'`
+                    const worstExplainSql = `SELECT intro, hashtag FROM type WHERE division = ${division} and type = '${worstType}'`
+                    connection.query(explainSql, (err, explainSqlResult) => {
+                        if(err) {
+                            console.error('쿼리 실행 오류:', err);
+                            res.status(500).json({ error: '데이터베이스 업데이트 오류 발생' });
+                        }
+                        connection.query(bestExplainSql, (err, bestExplainResult) => {
+                            if(err) {
+                                console.log('쿼리 실행 오류 : ', err);
+                                res.status(500).json({error:'데이터베이스 업테이트 오류 발생'})
+                            }
+                            connection.query(worstExplainSql, (err, worstExplainResult) => {
+                                if(err) {
+                                    console.log('쿼리 실행 오류 : ', err);
+                                    res.status(500).json({error:'데이터베이스 업테이트 오류 발생'})
+                                }
+                                // 프론트로 전송, 화면에 출력할 수 있는 데이터
+                                res.status(200).json({
+                                    studentData: studentData,
+                                    bestMatch: bestMatch, // 가장 유사한 type 값 반환
+                                    bestType : bestType,
+                                    worstType : worstType,
+                                    topFourFriends : topFourFriends,
+                                    explainResult : explainSqlResult,
+                                    bestExplainResult : bestExplainResult,
+                                    worstExplainResult : worstExplainResult
+                                });
+                            })
+                        })
+
                     });
                 }
             });
