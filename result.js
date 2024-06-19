@@ -1,6 +1,6 @@
 const express = require('express');
 const session = require('express-session');
-const connection = require('./db2'); // MySQL 연결 설정 파일
+const connection = require('./db'); // MySQL 연결 설정 파일
 const router = express.Router();
 
 // 유사도를 계산하는 함수
