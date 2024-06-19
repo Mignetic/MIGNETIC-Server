@@ -1,9 +1,7 @@
-// letter-server.js
-
 const express = require('express');
 const cors = require('cors');
 const router = express.Router();
-const connection = require('./db2');
+const connection = require('./db');
 
 router.use(cors());
 
@@ -41,6 +39,42 @@ router.get('/:type/:id', (req, res) => {
     });
 });
 
+router.get('/get', (req, res) => {
+
+    
+    const { id } = req.query;
+    const query = 'SELECT * FROM letter WHERE id = ?';
+    console.log("TT##",id);
+    connection.query(query, [id], (err, results) => {
+        if (err) {
+            console.error('Error fetching letter:', err);
+            return res.status(500).json({ error: 'Error fetching letter' });
+        }
+
+        if (results.length === 0) {
+            return res.status(404).json({ error: 'Letter not found' });
+        }
+
+        res.json(results[0]);
+    });
+});
+
+// Save letter
+// router.post('/saveLetter', (req, res) => {
+//     const { toName, fromName, letterContent } = req.body;
+
+//     const insertLetterQuery = 'INSERT INTO letter (toName, fromName, content) VALUES (?, ?, ?)';
+//     connection.query(insertLetterQuery, [toName, fromName, letterContent], (err, results) => {
+//         if (err) {
+//             console.error('Error inserting letter data:', err);
+//             res.status(500).json({ error: 'An error occurred while saving the letter.' });
+//         } else {
+//             console.log('Letter data successfully inserted:', results);
+//             res.status(200).json({ message: 'Letter sent and saved successfully!', letter: { toName, fromName, letterContent } });
+//         }
+//     });
+// });
+
 // Save letter
 router.post('/saveLetter', (req, res) => {
     const { toName, fromName, letterContent } = req.body;
@@ -51,27 +85,42 @@ router.post('/saveLetter', (req, res) => {
             console.error('Error inserting letter data:', err);
             res.status(500).json({ error: 'An error occurred while saving the letter.' });
         } else {
-            console.log('Letter data successfully inserted:', results);
-            res.status(200).json({ message: 'Letter sent and saved successfully!', letter: { toName, fromName, letterContent } });
+            const insertedLetterId = results.insertId; // Get the inserted letter's ID
+            res.status(200).json({ 
+                message: 'Letter sent and saved successfully!', 
+                letter: { id: insertedLetterId, toName, fromName, letterContent } 
+            });
         }
     });
 });
 
+
+// Fetch the last letter
 router.get('/lastLetter', (req, res) => {
-    // letter 테이블에서 최근에 추가된 편지 조회 쿼리
     const selectLastLetterQuery = 'SELECT * FROM letter ORDER BY id DESC LIMIT 1';
     connection.query(selectLastLetterQuery, (err, results) => {
         if (err) {
-            console.error('편지 데이터 조회 오류:', err);
-            res.status(500).json({ error: '편지 데이터 조회 중 오류 발생' });
+            console.error('Error fetching last letter:', err);
+            res.status(500).json({ error: 'Error fetching last letter' });
         } else {
-            // 조회된 마지막 편지를 클라이언트로 응답
             if (results.length > 0) {
                 res.status(200).json(results[0]);
             } else {
-                res.status(404).json({ error: '편지를 찾을 수 없습니다' });
+                res.status(404).json({ error: 'No letters found' });
             }
         }
+    });
+});
+
+router.get('/letters', (req, res) => {
+    const query = 'SELECT * FROM letter';
+    connection.query(query, (err, results) => {
+        if (err) {
+            console.error('Error fetching letters:', err);
+            return res.status(500).json({ error: 'Error fetching letters' });
+        }
+
+        res.json(results);
     });
 });
 
